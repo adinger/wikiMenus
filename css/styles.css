@@ -1,0 +1,432 @@
+@import url("http://fonts.googleapis.com/css?family=Bree+Serif|Merriweather");
+@import url("http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css");
+/* line 5, ../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline; }
+
+/* line 22, ../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1; }
+
+/* line 24, ../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none; }
+
+/* line 26, ../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* line 28, ../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle; }
+
+/* line 30, ../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none; }
+  /* line 103, ../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+  q:before, q:after, blockquote:before, blockquote:after {
+    content: "";
+    content: none; }
+
+/* line 32, ../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none; }
+
+/* line 116, ../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block; }
+
+/* line 8, ../../sass/styles.scss */
+.menuButton {
+  margin-right: 2px; }
+
+/* line 13, ../../sass/styles.scss */
+.listImage {
+  height: 50%;
+  width: 50%;
+  transition: all .2s ease-in-out; }
+
+/* line 18, ../../sass/styles.scss */
+.listImage:hover {
+  height: scale(1, 1.2);
+  width: scale(1, 1.2);
+  z-index: 99;
+  transform: scale(1.2); }
+
+/* line 26, ../../sass/styles.scss */
+.galleryImage {
+  transition: all .2s ease-in-out; }
+
+/* line 29, ../../sass/styles.scss */
+.galleryImage:hover {
+  height: scale(1, 1.5);
+  width: scale(1, 1.5);
+  transform: scale(1.5); }
+
+/* line 34, ../../sass/styles.scss */
+.arrows {
+  font-size: 50px; }
+
+/* line 37, ../../sass/styles.scss */
+.arrows:hover {
+  font-size: 100px; }
+
+/* line 41, ../../sass/styles.scss */
+#viewNav {
+  margin-top: 10px;
+  margin-bottom: 25px; }
+
+/* line 49, ../../sass/styles.scss */
+.viewNavOptions {
+  padding-left: 10px;
+  padding-right: 10px; }
+
+/* line 54, ../../sass/styles.scss */
+#movieTitle {
+  margin-top: 50px; }
+
+/* line 57, ../../sass/styles.scss */
+#buttonCollumn {
+  margin-bottom: 20px; }
+
+/* line 63, ../../sass/styles.scss */
+.movie-listing.ng-enter,
+.movie-listing.ng-leave,
+.movie-listing.ng-move {
+  -webkit-transition: 0.2s linear all;
+  -moz-transition: 0.2s linear all;
+  -o-transition: 0.2s linear all;
+  transition: 0.2s linear all; }
+
+/* line 72, ../../sass/styles.scss */
+.movie-listing.ng-enter,
+.movie-listing.ng-move {
+  opacity: 0;
+  height: 0;
+  overflow: hidden; }
+
+/* line 79, ../../sass/styles.scss */
+.movie-listing.ng-move.ng-move-active,
+.movie-listing.ng-enter.ng-enter-active {
+  opacity: 1;
+  height: 120px; }
+
+/* line 85, ../../sass/styles.scss */
+.movie-listing.ng-leave {
+  opacity: 1;
+  overflow: hidden; }
+
+/* line 90, ../../sass/styles.scss */
+.movie-listing.ng-leave.ng-leave-active {
+  opacity: 0;
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0; }
+
+/* line 100, ../../sass/styles.scss */
+.view-container {
+  position: relative; }
+
+/* line 104, ../../sass/styles.scss */
+.view-frame.ng-enter, .view-frame.ng-leave {
+  background: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0; }
+
+/* line 112, ../../sass/styles.scss */
+.view-frame.ng-enter {
+  -webkit-animation: 2.5s fade-in;
+  -moz-animation: 2.5s fade-in;
+  -o-animation: 2.5s fade-in;
+  animation: 2.5s fade-in;
+  z-index: 100; }
+
+/* line 120, ../../sass/styles.scss */
+.view-frame.ng-leave {
+  -webkit-animation: 2.5s fade-out;
+  -moz-animation: 2.5s fade-out;
+  -o-animation: 2.5s fade-out;
+  animation: 2.5s fade-out;
+  z-index: 99; }
+
+@keyframes fade-in {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@-moz-keyframes fade-in {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@keyframes fade-out {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+@-moz-keyframes fade-out {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+@-webkit-keyframes fade-out {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+/* line 155, ../../sass/styles.scss */
+.mainLogo {
+  width: 70px;
+  height: 55px;
+  transition: all 0.5s; }
+
+/* line 162, ../../sass/styles.scss */
+#rightBefore {
+  margin-bottom: 27px; }
+
+/* line 166, ../../sass/styles.scss */
+header {
+  width: 100%;
+  height: 100%;
+  background: url("../data/pics/spices.jpg");
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover; }
+
+/* line 175, ../../sass/styles.scss */
+#wikiButton {
+  background-color: #af0606; }
+
+/* line 178, ../../sass/styles.scss */
+#wikiButton:hover {
+  background-color: #333333; }
+
+/* line 183, ../../sass/styles.scss */
+#dynamicText {
+  color: white;
+  font-size: 28px;
+  margin-top: 40%; }
+
+/* line 189, ../../sass/styles.scss */
+.title {
+  color: #af0606;
+  line-height: 32px;
+  font-weight: 300;
+  margin-top: 100px;
+  font-family: "Bree Serif";
+  margin-bottom: 20px; }
+
+/* line 199, ../../sass/styles.scss */
+.subTitle {
+  color: #2e3b4e;
+  text-align: center;
+  position: relative;
+  line-height: 32px;
+  font-weight: 300;
+  margin-top: 5px;
+  font-family: "Rancho";
+  margin-bottom: 60px; }
+
+/* line 211, ../../sass/styles.scss */
+.imageWrapper {
+  width: 100px;
+  height: 220px;
+  margin: 20px auto 0px;
+  position: relative; }
+
+/* line 217, ../../sass/styles.scss */
+.imageWrapper img {
+  position: absolute;
+  top: 0px;
+  left: 0px; }
+
+/* line 223, ../../sass/styles.scss */
+.imageWrapper #iphoneLogo {
+  position: absolute;
+  top: 80px;
+  left: 30px;
+  width: 40px;
+  height: 30px; }
+
+/* line 231, ../../sass/styles.scss */
+#imageWrapper2 {
+  width: 200px; }
+
+/* line 235, ../../sass/styles.scss */
+#imageWrapper3 {
+  width: 100px; }
+
+/* line 240, ../../sass/styles.scss */
+#imageWrapper3 h3 {
+  position: absolute;
+  top: 30px;
+  left: 2px;
+  font-size: 12px; }
+
+/* line 247, ../../sass/styles.scss */
+#dynamicReviewWrapper {
+  position: absolute;
+  width: 80px;
+  top: 60px;
+  left: 10px;
+  font-size: 8px;
+  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
+
+/* line 255, ../../sass/styles.scss */
+#imageWrapper3 #dynamicReviewWrapper h4 {
+  font-size: 8px; }
+
+/* line 259, ../../sass/styles.scss */
+#missionSubtitle {
+  color: #2e3b4e;
+  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
+
+/* line 265, ../../sass/styles.scss */
+.employeeName {
+  color: #2e3b4e;
+  text-align: center;
+  position: relative;
+  font-size: 20px;
+  margin-top: 5px;
+  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
+
+/* line 274, ../../sass/styles.scss */
+.employeePicture {
+  width: 100px;
+  height: 100px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%; }
+
+@media only screen and (min-width: 40.063em) {
+  /* line 282, ../../sass/styles.scss */
+  .employeePicture {
+    width: 200px;
+    height: 200px; } }
+/* line 291, ../../sass/styles.scss */
+.employeePicture:hover {
+  -webkit-animation: spin 1s;
+  -webkit-animation-fill-mode: "";
+  -moz-animation: spin 1s;
+  -moz-animation-fill-mode: ""; }
+
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg); } }
+/* line 300, ../../sass/styles.scss */
+#iconWrapper {
+  position: relative;
+  width: 300px;
+  height: 100px; }
+
+/* line 306, ../../sass/styles.scss */
+.icon {
+  width: 24%;
+  height: 100%;
+  position: relative;
+  float: left; }
+
+/* line 313, ../../sass/styles.scss */
+.icon .fa {
+  font-size: 50px; }
+
+/* line 318, ../../sass/styles.scss */
+.icon .fa:hover {
+  font-size: 75px;
+  color: #af0606; }
+
+/* line 325, ../../sass/styles.scss */
+#chefImage {
+  margin: 0 auto 0 auto; }
+
+/* line 329, ../../sass/styles.scss */
+#myBlockQuote {
+  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
+
+/* line 332, ../../sass/styles.scss */
+#myBlockQuote i {
+  font-size: 10px; }
+
+/* line 342, ../../sass/styles.scss */
+#restrauntTitle {
+  margin-top: 75px; }
+
+/* line 345, ../../sass/styles.scss */
+#videoSection {
+  margin-bottom: 20px; }
+
+/* line 349, ../../sass/styles.scss */
+#videoSubTitle {
+  margin-bottom: 20px; }
+
+/* line 353, ../../sass/styles.scss */
+.footer {
+  background-color: #af0606;
+  padding: 2rem 4rem;
+  text-align: center;
+  color: #fff; }
+  /* line 358, ../../sass/styles.scss */
+  .footer i {
+    font-size: 100px;
+    margin-bottom: 20px; }
+
+/* line 365, ../../sass/styles.scss */
+.footer h4 {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-top: 2.5rem;
+  margin-bottom: 10px; }
+/* line 373, ../../sass/styles.scss */
+.footer p {
+  font-weight: 300;
+  font-size: .8rem; }
+
+@media only screen and (min-width: 40.063em) {
+  /* line 382, ../../sass/styles.scss */
+  .footer .columns:nth-child(n+2) {
+    border-left: 1px solid #b3b3b3;
+    min-height: 280px; } }
+/* line 389, ../../sass/styles.scss */
+.footer-links {
+  list-style-type: none; }
+  /* line 391, ../../sass/styles.scss */
+  .footer-links a {
+    color: #fff;
+    font-weight: 300;
+    font-size: .8rem; }
+  /* line 396, ../../sass/styles.scss */
+  .footer-links li {
+    margin-top: .5rem; }
