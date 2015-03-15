@@ -3,7 +3,7 @@ wikiMenus
 Hello
 
 Collaborators:
-alding2 (Angela) aprilxu2 (April) dnoora2 (Danish) (khurram)
+alding2 (Lin/Angela), aprilxu2 (April), dnoora2 (Danish), kghull2 (Khurram)
 
 Github notes:
 
