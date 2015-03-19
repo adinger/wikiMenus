@@ -47,6 +47,8 @@
 		      <li class="divider"></li>
 		      <li><a href="#contactSection">Contacts</a></li>
 		      <li class="divider"></li>
+		      <li><a href="loginform.php">Log in / Register</a></li>
+		      <li class="divider"></li>
 		    </ul>
 		  </section>
 		</nav>

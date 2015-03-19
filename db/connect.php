@@ -7,6 +7,4 @@ if ($db->connect_errno) {
 	die('Sorry, we are having problems.');
 }
 
-
-
 ?>
