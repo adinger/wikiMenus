@@ -1,15 +1,13 @@
 <?php
 
-
-function login($username, $password) {
-	$username = sanitize($username);	
-	$password = md5($password);
-	$query = mysql_query("SELECT COUNT(*) FROM users WHERE username='$username' AND password='$password'");
-	return (mysql_result($query,0) == 1) ? $username : false;
+function logged_in() {
+	return isset($_SESSION['username']) ? true : false;
 }
-
-function sanitize($data) {
-	return mysql_real_escape_string($data);
+function prevent_intruders() {
+	if (!logged_in()) {
+		echo '<h4>Sorry, you must be logged in to access the contents of this page.</h4>
+		<h4>Please <a href="loginform.php">log in</a>.</h4>';
+		exit();
+	}
 }
-
 ?>
