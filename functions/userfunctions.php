@@ -1,26 +1,29 @@
 <?php
 
 function favorite_restaurant($db, $username) {
-    $email = $db->query("SELECT email FROM users WHERE users.username = '$username'");
+    $email = $db->query("
+        SELECT email 
+        FROM users 
+        WHERE users.username = '$username'");
     $email = $email->fetch_object();
     $email = $email->email;
-    $make_view = $db->query("create view restaurantRatings as 
-        (
-            select restaurant, avg(review.numericalrating) as avgrating 
-            from dishreview, dish, review 
-            where dishreview.useremail = '$email' 
-            and dishreview.reviewid = review.reviewid 
-            and dishreview.dishid = dish.dishid 
-            group by dish.restaurant
-        )");
+    $make_view = $db->query("
+        CREATE OR REPLACE VIEW restaurantRatings AS
+        SELECT restaurant, avg(review.numericalrating) as avgrating 
+        FROM dishreview, dish, review 
+        WHERE dishreview.useremail = '$email' 
+        AND dishreview.reviewid = review.reviewid 
+        AND dishreview.dishid = dish.dishid 
+        GROUP BY dish.restaurant
+        ");
 
     $result = $db->query("
-        select restaurant
-        from restaurantRatings
-        where avgrating = 
+        SELECT restaurant
+        FROM restaurantRatings
+        WHERE avgrating = 
         ( 
-            select max(avgrating)
-            from restaurantRatings
+            SELECT max(avgrating)
+            FROM restaurantRatings
         )");
     $result = $result->fetch_object();
     return $result->restaurant;
