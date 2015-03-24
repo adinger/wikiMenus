@@ -8,6 +8,11 @@ require "functions/userfunctions.php";
 
 	<div class="row">
 		<div class="small-10 small-centered columns floating">
+            <?php
+            if(isset($_SESSION['username'])) {
+                echo "<p>You're already logged in.</p>";
+            } else {
+            ?>
             <div class="small-12 medium-6 columns">
                 
                 <?php
@@ -34,9 +39,7 @@ require "functions/userfunctions.php";
 					<fieldset>
                         <h3>Log In</h3>
                         <?php
-                        if(isset($_SESSION['username'])) {
-                            echo "<p>You're already logged in.</p>";
-                        }
+                        
                         ?>
 				    	<label for="usernameLogin">Username</label>
 				    	  <input name="usernameLogin" id="usernameLogin" type="text">
@@ -86,7 +89,9 @@ require "functions/userfunctions.php";
 					</fieldset>
 				</form>
 			</div>
-
+            <?php
+            }
+            ?>
 		</div>
 	</div>
 

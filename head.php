@@ -18,3 +18,36 @@
   <?php require "db/connect.php"; ?>	<!--connect to database-->
 </head>
 <body>
+    	<div class="contain-to-grid sticky">
+		<nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: [small,medium,large]">
+		  <ul class="title-area">
+		    <li class="name">
+		      <h1><a href="index.php"><img src="data/pics/mainLogoWhite.png" class="mainLogo"/></a></h1>
+		    </li>
+		   <!--  <li class="name">Help change Menus</li> -->
+		     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+		    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+		  </ul>
+
+		  <section class="top-bar-section">
+		    <!-- Left Nav Section -->
+		     <ul class="left">
+		      <li><a href="#" data-reveal-id="Subscribe">Subscribe</a></li>
+		      
+		    </ul>
+		    <ul class="right">
+		      <li><a href="#missionSection">Mission</a></li>
+		      <li class="divider"></li>
+		      <li><a href="#restrauntSection">Business</a></li>
+		      <li class="divider"></li>
+		      <li><a href="#teamSection">Team</a></li>
+		      <li class="divider"></li>
+		      <li><a href="#videoSection">See It In Action</a></li>
+		      <li class="divider"></li>
+		      <li><a href="#contactSection">Contacts</a></li>
+		      <li class="divider"></li>
+              <li><a href="loginform.php">Log in / Register</a></li>
+		    </ul>
+		  </section>
+		</nav>
+	</div>

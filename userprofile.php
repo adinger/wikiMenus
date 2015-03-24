@@ -13,7 +13,7 @@ prevent_intruders();
 			<div class="profilepic">
 				<a href="" class="th"><img src="data/pics/profPicPlaceholder.jpg" alt="alt"></a>
 			</div>
-			<h4 class="username-title"><strong><?php echo $_SESSION['username'] ?></strong></h4>
+			<h2 class="username-title"><strong><?php echo $_SESSION['username'] ?></strong></h2>
             <!-- TODO: logout functionality -->
 			<p><strong>Favorite Restaurant(s):</strong><br>
             <?php 
@@ -42,9 +42,12 @@ prevent_intruders();
             ?>
             </p>
 		</div>
+        <!-- user's reviews -->
 		<div class="small-12 medium-8 columns">
 			<div class="panel">
-				<h4><strong><?php echo $_SESSION['username'], "'s Reviews" ?></strong></h4>
+				<h4 class="username-title"><strong>
+                    <?php echo $_SESSION['username'], "'s Reviews" ?>
+                </strong></h4>
 				<hr>
                 <?php
                 $result = get_users_reviews($db, $_SESSION["username"]);

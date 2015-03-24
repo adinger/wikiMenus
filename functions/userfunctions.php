@@ -1,4 +1,8 @@
 <?php
+function logout() {
+    
+    
+}
 function get_users_reviews($db, $username) {
     $result = $db->query("
         SELECT dish.name, dish.restaurant, review.numericalrating
