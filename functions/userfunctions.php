@@ -4,7 +4,7 @@ function get_users_reviews($db, $username) {
         SELECT dish.name, dish.restaurant, review.numericalrating
         FROM dish, review, dishreview
         WHERE dishreview.useremail = (
-            SELECT useremail
+            SELECT email
             FROM users
             WHERE username='$username')
         AND dishreview.reviewid = review.reviewid
@@ -21,7 +21,7 @@ function get_fave_dish($db, $username) {
         WHERE dishreview.reviewid = review.reviewid
         AND dishreview.dishid = dish.dishid
         AND dishreview.useremail = (
-            SELECT useremail
+            SELECT email
             FROM users
             WHERE username='$username'
             )
