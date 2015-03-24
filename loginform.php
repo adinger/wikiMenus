@@ -73,7 +73,7 @@ require "functions/userfunctions.php";
                         <?php
                         if(isset($_GET['registered'])) {
                             echo "<p>You have successfully registered for an account.
-                                    You may now log in on the right.</p>";
+                                    You may now log in.</p>";
                         }
                         ?>
                             <label for="email">Email Address</label>
