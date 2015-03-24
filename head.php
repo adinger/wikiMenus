@@ -1,4 +1,8 @@
-<?php session_start() ?>
+<?php 
+require "db/connect.php"; 
+session_start(); 
+require "functions/userfunctions.php";
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -46,7 +50,13 @@
 		      <li class="divider"></li>
 		      <li><a href="#contactSection">Contacts</a></li>
 		      <li class="divider"></li>
-              <li><a href="loginform.php">Log in / Register</a></li>
+                <?php
+                    if(logged_in()) {
+                        echo '<li><a href="logout.php">Log out</a></li>';
+                    } else {
+                        echo '<li><a href="loginform.php">Log in / Register</a></li>';
+                    }
+                ?>
 		    </ul>
 		  </section>
 		</nav>

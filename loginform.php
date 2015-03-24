@@ -1,8 +1,4 @@
-<?php
-include "head.php";
-require "db/connect.php"; 
-require "functions/userfunctions.php";
-?>
+<?php include "head.php" ?>
 
 <div class="row" id="subcriptionSection">
 
@@ -27,7 +23,7 @@ require "functions/userfunctions.php";
 								WHERE username='$username' AND password='$password'")) {
 								if($results->num_rows) {
 									$_SESSION['username'] = $username;
-									header('Location: userprofile.php?logged_in');
+									header('Location: userprofile.php');
 								}
 								$results->free();
 							}

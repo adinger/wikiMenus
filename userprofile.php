@@ -1,7 +1,5 @@
 <?php
 include "head.php";
-require "db/connect.php"; 
-include "functions/userfunctions.php";
 prevent_intruders();
 // TODO: user's favorite dish
 
