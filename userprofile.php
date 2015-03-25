@@ -1,9 +1,6 @@
 <?php
 include "head.php";
 prevent_intruders();
-// TODO: user's favorite dish
-
-// TODO: show all user's reviews
 ?>
 <div class="row">
 	<div class="small-10 small-centered columns floating">
@@ -46,18 +43,18 @@ prevent_intruders();
 				<h4 class="username-title"><strong>
                     <?php echo $_SESSION['username'], "'s Reviews" ?>
                 </strong></h4>
-				<hr>
                 <?php
                 $result = get_users_reviews($db, $_SESSION["username"]);
                 if($result) {
                     if($count = $result->num_rows) {
                         while($row = $result->fetch_object()) {
                             echo '
+                            <hr>
                             <div class="usersReview">
                                 <h5 class="dishName"><strong>',ucwords($row->name),'</strong> from <strong>',ucwords($row->restaurant),'</strong></h5>
                                 <h5>Rating: <strong>',$row->numericalrating,'/5</strong></h5>
                             </div>
-                            <hr>';
+                            ';
                         }
                     }
 
