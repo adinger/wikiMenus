@@ -1,4 +1,5 @@
 <?php 
+ob_start();
 require "db/connect.php"; 
 session_start(); 
 require "functions/userfunctions.php";
@@ -19,7 +20,6 @@ require "functions/userfunctions.php";
   <link href="http://fonts.googleapis.com/css?family=Rancho" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Gudea" rel="stylesheet" type="text/css">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <?php require "db/connect.php"; ?>	<!--connect to database-->
 </head>
 <body>
     	<div class="contain-to-grid sticky">

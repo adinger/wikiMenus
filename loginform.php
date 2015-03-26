@@ -59,7 +59,7 @@
 								VALUES (?, ?, ?)");
 							$insert->bind_param('sss', $email, $username, $password);
 							if($insert->execute()) {
-								header('Location: loginform.php?registered');
+								header('Location: loginform.php');
 								die();
 							}
 						}
@@ -91,5 +91,4 @@
 		</div>
 	</div>
 
-</body>
-</html>
+<?php include 'tail.php'; ?>
