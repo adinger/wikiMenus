@@ -1,7 +1,7 @@
 <?php
 function get_users_reviews($db, $username) {
     $result = $db->query("
-        SELECT dish.name, dish.restaurant, review.numericalrating
+        SELECT dish.name, dish.restaurant, review.numericalrating, review.verbalreview, review.reviewid
         FROM dish, review, dishreview
         WHERE dishreview.useremail = (
             SELECT email

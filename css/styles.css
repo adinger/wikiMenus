@@ -20,7 +20,12 @@ time, mark, audio, video {
   font: inherit;
   font-size: 100%;
   vertical-align: baseline; }
-
+.has-tip {
+  border-bottom: dotted 1px #CCCCCC;
+  color: #333333;
+  cursor: help;
+  font-weight: bold;
+}
 .backdrop {
     background-color: black;
     background-color: rgba(0,0,0,0.5);
