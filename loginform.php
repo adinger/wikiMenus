@@ -31,7 +31,7 @@
 					}
 				}
 				?>
-				<form method="post" id="loginForm">
+				<form method="post" name="loginForm">
 					<fieldset>
                         <h3>Log In</h3>
                         <?php
@@ -66,7 +66,7 @@
 					}
 				}
 				?>
-				<form method="post" id="registerForm">
+				<form method="post" name="registerForm">
 					<fieldset>
                         <h3>Register</h3>
                         <?php
@@ -75,12 +75,14 @@
                                     You may now log in.</p>";
                         }
                         ?>
-                            <label for="email">Email Address</label>
-							<input name="email" id="email" type="email">		    
+                        <label for="email">Email Address</label>
+						<input name="email" id="email" type="email">
+                        <div id="email_feedback"></div>
 						<label for="username">Username</label>
-							<input name="username" id="username" type="text">				    
+						<input name="username" id="username" type="text">
+                        <div id="username_feedback"></div>
 						<label for="password">Password</label>
-							<input name="password" id="password" type="password">			    
+						<input name="password" id="password" type="password">
 						<button type="submit" id="wikiButton">Register</button>
 					</fieldset>
 				</form>
@@ -90,5 +92,23 @@
             ?>
 		</div>
 	</div>
-
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#username_feedback').load('functions/registerFormCheck.php').show();
+    $('#username').keyup(function() {
+       $.post('functions/registerFormCheck.php', { username: registerForm.username.value,  },   // post into registerFormCheck.php the post variable 'username'
+            function(result) {      // result is what registerFormCheck.php returns
+                $('#username_feedback').html(result).show(); // display the result where #feedback is
+       });
+    });
+     $('#email_feedback').load('functions/registerFormCheck.php').show();
+    $('#email').keyup(function() {
+       $.post('functions/registerFormCheck.php', { email: registerForm.email.value,  },
+            function(result) { 
+                $('#email_feedback').html(result).show();
+       });
+    });
+});
+    
+</script>
 <?php include 'tail.php'; ?>
