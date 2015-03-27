@@ -90,17 +90,16 @@ prevent_intruders();
 </div>
 <script>    
 $(document).ready(function() {
-        $('#feedback').load('functions/updateReview.php').show();
+    $('#feedback').load('functions/updateReview.php').show();
     $('.editReview').submit(function(event) {
         event.preventDefault();
-        //if(request) request.abort();
         var $form = $(this);
-        var reviewid1 = String($form.data('reviewid'));
-        var rating1 = String($form.find(".rating").val());
-        var review1 = String($form.find(".review").val());
-        //alert(review1);
-        $.post('functions/updateReview.php', { reviewid: reviewid1, rating: rating1, review: review1 }, function(result) {
-            $('#feedback'+reviewid1).html(result).show();
+        var _reviewid = String($form.data('reviewid'));
+        var _rating = String($form.find(".rating").val());
+        var _review = String($form.find(".review").val());
+        $('#feedback' + _reviewid).load('functions/updateReview.php').show();
+        $.post('functions/updateReview.php', { reviewid: _reviewid, rating: _rating, review: _review }, function(result) {
+            $('#feedback' + _reviewid).html(result).show();
         });
     });    
 }); 
