@@ -11,7 +11,6 @@ if (isset($_POST['rating']) && isset($_POST['review'])) {
         SET numericalrating='$rating', verbalreview='$review'
         WHERE reviewid='$reviewid'
     ");
-    echo 'yasssss';
+    echo 'You have successfully changed your review.';
 }
-echo 'end';
 ?>
