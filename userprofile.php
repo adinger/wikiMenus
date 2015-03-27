@@ -9,6 +9,7 @@ prevent_intruders();
 				<a href="" class="th"><img src="data/pics/profPicPlaceholder.jpg" alt="alt"></a>
 			</div>
 			<h2 class="username-title"><strong><?php echo $_SESSION['username'] ?></strong></h2>
+            
 			<p><strong>Favorite Restaurants:</strong><br>
             <?php 
             $restaurant = get_fave_restaurant($db, $_SESSION["username"]);
@@ -49,20 +50,31 @@ prevent_intruders();
                         while($row = $result->fetch_object()) {
                             $dish = ucwords($row->name);
                             $restaurant = ucwords($row->restaurant);
-                            $verbalReview = $row->verbalreview;
                             $reviewid = $row->reviewid;
+                            $review = $row->verbalreview;
+                            $rating = $row->numericalrating;
                             echo '
                             <hr>
                             <div class="usersReview row">
                                 <div class="small-11 small-centered columns">
-                                    <h5 class="dishName"><strong>',$dish,'</strong> from <strong>',$restaurant,'</strong>&nbsp;&nbsp;&nbsp; <a href="#" data-reveal-id="writtenReview',$reviewid,'">Edit</a></h5>
-                                    <h5>Rating: <strong>',$row->numericalrating,'/5</strong></h5>
-                                    <p>',$verbalReview,'</p>
+                                    <h5 class="dishName"><strong>',$dish,'</strong> from <strong>',$restaurant,'</strong>
+                                    &nbsp;&nbsp;&nbsp;<a href="#" data-reveal-id="writtenReview',$reviewid,'">Edit</a></h5>
+                                    <h5>Rating: <strong>',$rating,'/5</strong></h5>
+                                    <p>',$review,'</p>
                                 </div>
-                                <div id="writtenReview',$reviewid,'" class="reveal-modal" data-reveal>
-                                      <h3>',$dish,' from ',$restaurant ,'</h3>
-                                      <h5>Rating: <strong>',$row->numericalrating,'/5</strong></h5>
+                                <div id="writtenReview',$reviewid,'"  class="reveal-modal" data-reveal>
+                                    <form method="post" class="editReview" data-reviewid="',$reviewid,'">
+                                      <h3>Editting review for ',$dish,' from ',$restaurant,'</h3>
+                                      <label for="rating">Rating:</label>
+                                      <input name="rating" class="rating" value=',$rating,' /> /5
+                                      
+                                      <label for="review">Review:</label>
+                                      <textarea name="review" class="review" >',$review,'</textarea>
+                                      
+                                      <p id="feedback',$reviewid,'"></p>
+                                      <input class="button" type="submit" value="Update" />
                                       <a class="close-reveal-modal">&#215;</a>
+                                    </form>
                                 </div> 
                             </div>
                             ';
@@ -76,5 +88,21 @@ prevent_intruders();
 		</div>
 	</div>
 </div>
-
+<script>    
+$(document).ready(function() {
+        $('#feedback').load('functions/updateReview.php').show();
+    $('.editReview').submit(function(event) {
+        event.preventDefault();
+        //if(request) request.abort();
+        var $form = $(this);
+        var reviewid1 = String($form.data('reviewid'));
+        var rating1 = String($form.find(".rating").val());
+        var review1 = String($form.find(".review").val());
+        //alert(review1);
+        $.post('functions/updateReview.php', { reviewid: reviewid1, rating: rating1, review: review1 }, function(result) {
+            $('#feedback'+reviewid1).html(result).show();
+        });
+    });    
+}); 
+</script>
 <?php include 'tail.php' ?>

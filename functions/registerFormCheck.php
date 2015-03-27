@@ -1,19 +1,19 @@
 <?php
 include '../db/connect.php';
 include 'userfunctions.php';
-if (isset($_POST['username'])) {
+if(isset($_POST['username'])) {
     $username = $_POST['username'];
-    if (username_exists($db, $username)) {
+    if(username_exists($db, $username)) {
         echo 'That username has been taken.';    
-    } else {
+    } elseif(strlen($username) != 0) {
         echo 'That username is available.';   
     }
 }
-if (isset($_POST['email'])) {
+if(isset($_POST['email'])) {
     $email = $_POST['email'];
-    if (email_exists($db, $email)) {        
+    if(email_exists($db, $email)) {        
         echo 'That email has already been registered with an account.';
-    } else {
+    } elseif(strlen($email) != 0) {
         echo 'Valid email.';
     }
 }

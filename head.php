@@ -1,5 +1,5 @@
 <?php 
-ob_start();
+ob_start(); // suppress "header must be called before first output" error
 require "db/connect.php"; 
 session_start(); 
 require "functions/userfunctions.php";

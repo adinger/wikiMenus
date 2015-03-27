@@ -96,19 +96,18 @@
 $(document).ready(function() {
     $('#username_feedback').load('functions/registerFormCheck.php').show();
     $('#username').keyup(function() {
-       $.post('functions/registerFormCheck.php', { username: registerForm.username.value,  },   // post into registerFormCheck.php the post variable 'username'
+       $.post('functions/registerFormCheck.php', { username: registerForm.username.value },   // post into registerFormCheck.php the post variable 'username'
             function(result) {      // result is what registerFormCheck.php returns
                 $('#username_feedback').html(result).show(); // display the result where #feedback is
        });
     });
-     $('#email_feedback').load('functions/registerFormCheck.php').show();
+    $('#email_feedback').load('functions/registerFormCheck.php').show();
     $('#email').keyup(function() {
-       $.post('functions/registerFormCheck.php', { email: registerForm.email.value,  },
+       $.post('functions/registerFormCheck.php', { email: registerForm.email.value },
             function(result) { 
                 $('#email_feedback').html(result).show();
        });
     });
-});
-    
+});    
 </script>
 <?php include 'tail.php'; ?>
