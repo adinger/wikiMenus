@@ -1,14 +1,26 @@
 <?php
-function logout() {
-    
-    
+function email_exists($db, $email) {
+    $result = $db->query("
+        SELECT email 
+        FROM users
+        WHERE email='$email'    
+    ");
+    return $result->num_rows >= 1;
+}
+function username_exists($db, $username) {
+    $result = $db->query("
+        SELECT username 
+        FROM users
+        WHERE username='$username'    
+    ");
+    return $result->num_rows >= 1;
 }
 function get_users_reviews($db, $username) {
     $result = $db->query("
-        SELECT dish.name, dish.restaurant, review.numericalrating
+        SELECT dish.name, dish.restaurant, review.numericalrating, review.verbalreview, review.reviewid
         FROM dish, review, dishreview
         WHERE dishreview.useremail = (
-            SELECT useremail
+            SELECT email
             FROM users
             WHERE username='$username')
         AND dishreview.reviewid = review.reviewid
@@ -25,7 +37,7 @@ function get_fave_dish($db, $username) {
         WHERE dishreview.reviewid = review.reviewid
         AND dishreview.dishid = dish.dishid
         AND dishreview.useremail = (
-            SELECT useremail
+            SELECT email
             FROM users
             WHERE username='$username'
             )

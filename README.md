@@ -13,7 +13,7 @@ Github Instructions:
     1. Click on the gear symbol at the top right.
     2. Click on options in the dropdown.
     3. On the right side, under "Clone Path", change the path in that input field to C:\xampp\htdocs\wikimenus, or whereever you have the wikimenus folder.
-- IMPORTANT: every time before you start working, you need to commit or "stash" (throw away) your changes, then sync your branch with the origin branch in order to get the most up-to-date changes that everyone else made. To do this, type "git pull upstream master".
+- IMPORTANT: every time before you start working, you need to do "git pull upstream master" to get the most up-to-date version of the origin branch, with all your team members' approved changes to it. If you have outstanding commits in your branch, this may throw an error. In this case, do a commit-and-pull-request or "git stash" (throw away) your changes.
 - After making a change to your local copy, you can commit it to your own branch by doing: 
 	1. git add .
 	2. git commit -m "changed stuff"
