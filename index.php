@@ -56,17 +56,36 @@
 
 	<header class="row">
 			
-		<div class="small-7 small-centered columns" id="searchBox">
+		<div class="small-7 small-centered columns backdrop" id="searchBox">
 
 			<h2 id="dynamicText" class="text-center"></h2>
 
-			<div class="row collapse postfix-radius">
-				<div class="small-10 columns">
-				     <input type="text" placeholder="Restraunt Name, ZipCode, Cusine">
-				</div>
-				<div class="small-2 columns">
-				     <a href="#" class="button postfix custom-button-class" id="wikiButton">Go</a>
-				</div>
+            <div class="row collapse postfix-radius">
+                <div class="small-10 small-centered columns">
+                    <div class="row collapse postfix-radius">
+                        <div class="small-10 columns">
+                             <input type="text" placeholder="e.g. McDonald's">
+                        </div>
+                        <div class="small-2 columns">
+                             <a href="#" class="button postfix custom-button-class" id="wikiButton">Go</a>
+                        </div>
+                    </div>
+                </div>
+			</div>
+            
+            <h4 class="text-center" style="color:white">- OR -</h4>
+            <h3 class="text-center" style="color:white">What would you like to eat today?</h3>
+            <div class="row collapse postfix-radius">
+                <div class="small-10 small-centered columns">
+                    <div class="row collapse postfix-radius">
+                        <div class="small-10 columns">
+                             <input type="text" placeholder="e.g. hamburger">
+                        </div>
+                        <div class="small-2 columns">
+                             <a href="#" class="button postfix custom-button-class" id="wikiButton">Go</a>
+                        </div>
+                    </div>
+                </div>
 			</div>
 
 		</div>
