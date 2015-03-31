@@ -1,11 +1,11 @@
 <?php
-require 'connect.php'; // The mysql database connection script
+require 'db/connect.php'; // The mysql database connection script
 	$status = '%';
 	if(isset($_GET['status'])){
 	$status = $_GET['status'];
 	}
-	$sql ="Select name from chainrestaurant";
-	$result = $mysqli->query($sql);
+	$sql ="Select name from restaurants";
+	$result = $db->query($sql);
 	 
 	// echo $result->num_rows;
 	$arr = array();

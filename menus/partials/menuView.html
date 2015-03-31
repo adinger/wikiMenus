@@ -5,20 +5,20 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-<!-- <dt ng-repeat = "dish in dishes | filter: restaurantName | filter: 'soup'">
+<!-- <dt ng-repeat = "dish in dishes | filter: restaurant | filter: 'soup'">
 											{{dish.name}}
 </dt> -->
-<!-- <h1>{{restaurantName}}</h1>
+<!-- <h1>{{restaurant}}</h1>
 
 
 	<div class="small-3 columns">
 
 		<ul> 
 			<h1> Entree </h1>
-			<li ng-repeat = "dish in dishes | filter: restaurantName | filter: 'entree'" >
+			<li ng-repeat = "dish in dishes | filter: restaurant | filter: 'entree'" >
 			
 				
-				{{dish.dishName}}
+				{{dish.name}}
 				{{dish.price}}
 				{{dish.course}}
 		
@@ -32,10 +32,10 @@
 	<div class="small-3 columns">
 		<h1> Soup</h1>
 		<ul> 
-			<li ng-repeat = "dish in dishes | filter: restaurantName | filter: 'soup'" >
+			<li ng-repeat = "dish in dishes | filter: restaurant | filter: 'soup'" >
 			
 				
-				{{dish.dishName}}
+				{{dish.name}}
 				{{dish.price}}
 				{{dish.course}}
 			
@@ -49,10 +49,10 @@
 	<div class="small-3 columns">
 		<h1> Side</h1>
 		<ul> 
-			<li ng-repeat = "dish in dishes | filter: restaurantName | filter: 'side'" >
+			<li ng-repeat = "dish in dishes | filter: restaurant | filter: 'side'" >
 			
 				
-				{{dish.dishName}}
+				{{dish.name}}
 				price: {{dish.price | currency}}
 				{{dish.course}}
 			
@@ -66,10 +66,10 @@
 	<div class="small-3 columns">
 		<h1> Dessert</h1>
 		<ul> 
-			<li ng-repeat = "dish in dishes | filter: restaurantName | filter: 'side'" >
+			<li ng-repeat = "dish in dishes | filter: restaurant | filter: 'side'" >
 			
 				
-				{{dish.dishName}}
+				{{dish.name}}
 				{{dish.price}}
 				{{dish.course}}
 			
@@ -141,9 +141,9 @@
 								<div class="rm-content">
 									<h4>Top Appetizers</h4>
 									<dl>
-										<div ng-repeat = "dish in dishes | filter: restaurantName | filter: 'soup' | orderBy: 'averageRating' : true">
-											<dt>{{dish.dishName}} {{dish.price| currency}}</dt>
-											<dd>{{dish.description}} <br/><b> Rating: {{dish.averageRating}} stars </b></dd>
+										<div ng-repeat = "dish in dishes | filter: restaurant | filter: 'soup' | orderBy: 'averagerating' : true">
+											<dt>{{dish.name}} {{dish.price| currency}}</dt>
+											<dd>{{dish.description}} <br/><b> Rating: {{dish.averagerating}} stars </b></dd>
 										</div>
 										<!-- <dt>Bella's Artichokes</dt>
 										<dd>Roasted artichokes with chipotle aioli and cream cheese</dd>
@@ -162,10 +162,10 @@
 									</dl>
 
 									<h4>Top Sides &amp; More</h4>
-									<dl ng-repeat = "dish in dishes | filter: restaurantName | filter: 'side' | orderBy: 'averageRating' : true">
+									<dl ng-repeat = "dish in dishes | filter: restaurant | filter: 'side' | orderBy: 'averagerating' : true">
 										<div >
-											<dt>{{dish.dishName}} {{dish.price| currency}}</dt>
-											<dd>{{dish.description}} <br/><b> Rating: {{dish.averageRating}} stars </b></dd>
+											<dt>{{dish.name}} {{dish.price| currency}}</dt>
+											<dd>{{dish.description}} <br/><b> Rating: {{dish.averagerating}} stars </b></dd>
 										</div>
 										<!-- <dt>Green Delight</dt>
 										<dd>Watercress, frisee and avocado salad</dd>
@@ -187,11 +187,11 @@
 							<div class="rm-inner">
 								<div class="rm-content">
 									<h4>Top Entrees</h4>
-									<dl ng-repeat = "dish in dishes | filter: restaurantName | filter: 'entree' | orderBy: 'averageRating' : true | limitTo:5">
+									<dl ng-repeat = "dish in dishes | filter: restaurant | filter: 'entree' | orderBy: 'averagerating' : true | limitTo:5">
 										<div >
-											<dt>{{dish.dishName}} {{dish.price| currency}}</dt>
-											<dd>{{dish.description}} <br/><b> Rating: {{dish.averageRating}} stars </b></dd>
-											<!-- <span class="glyphicon glyphicon-star" ng-repeat="i in range.slice(0,{{dish.averageRating}}) track by $index"/> -->
+											<dt>{{dish.name}} {{dish.price| currency}}</dt>
+											<dd>{{dish.description}} <br/><b> Rating: {{dish.averagerating}} stars </b></dd>
+											<!-- <span class="glyphicon glyphicon-star" ng-repeat="i in range.slice(0,{{dish.averagerating}}) track by $index"/> -->
 											<!-- <i class="fa fa-star" ng-repeat="i in range.slice(0, 4 ) track by $index"></i> -->
 										</div>
 										<!-- <dt><a href="http://herbivoracious.com/2009/03/panfried-gnocchi-with-arugula-recipe.html" class="rm-viewdetails" data-thumb="images/11.jpg">Crispy Gnocchi with Arugula</a></dt>
@@ -233,10 +233,10 @@
 								<span class="rm-close">Close</span>
 								<div class="rm-content">
 									<h4>Top Desserts</h4>
-									<dl ng-repeat = "dish in dishes | filter: restaurantName | filter: 'dessert' | orderBy: dish.averageRating : true | limitTo:5">
+									<dl ng-repeat = "dish in dishes | filter: restaurant | filter: 'dessert' | orderBy: dish.averagerating : true | limitTo:5">
 										<div >
-											<dt>{{dish.dishName}} {{dish.price| currency}}</dt>
-											<dd>{{dish.description}} <br/><b> Rating: {{dish.averageRating}} stars </b></dd>
+											<dt>{{dish.name}} {{dish.price| currency}}</dt>
+											<dd>{{dish.description}} <br/><b> Rating: {{dish.averagerating}} stars </b></dd>
 										</div>
 										<!-- <dt><a href="http://herbivoracious.com/2012/08/crepes-with-roasted-french-plums-yogurt-and-honey.html" class="rm-viewdetails" data-thumb="images/5.jpg">French Plum Crepes</a></dt>
 										<dd>Crepes with roasted french plums, yogurt &amp; honey</dd>

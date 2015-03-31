@@ -90,7 +90,7 @@ prevent_intruders();
 </div>
 <script>    
 $(document).ready(function() {
-    $('#feedback').load('functions/updateReview.php').show();
+    //$('#feedback').load('functions/updateReview.php').show();
     $('.editReview').submit(function(event) {
         event.preventDefault();
         var $form = $(this);
