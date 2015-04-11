@@ -6,12 +6,6 @@ if (isset($_POST['rating']) && isset($_POST['review'])) {
     $rating = $_POST['rating'];
     $review = $_POST['review'];
     $reviewid = $_POST['reviewid'];
-    /*$db->query("
-        UPDATE review
-        SET numericalrating='$rating', verbalreview='$review'
-        WHERE reviewid='$reviewid'
-    ");
-    echo 'Your review has been updated.';*/
     $update = $db->prepare("
         UPDATE review
         SET numericalrating='?', verbalreview='?'

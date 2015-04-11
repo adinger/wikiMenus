@@ -58,11 +58,13 @@ prevent_intruders();
                             <div class="usersReview row">
                                 <div class="small-11 small-centered columns">
                                     <h5 class="dishName"><strong>',$dish,'</strong> from <strong>',$restaurant,'</strong>
-                                    &nbsp;&nbsp;&nbsp;<a href="#" data-reveal-id="writtenReview',$reviewid,'">Edit</a></h5>
+                                    &nbsp;&nbsp;&nbsp;<a href="#" data-reveal-id="editReview',$reviewid,'">Edit</a>
+                                    &nbsp;&nbsp;&nbsp;<a href="#" data-reveal-id="deleteReview',$reviewid,'">Delete</a>
+                                    </h5>
                                     <h5>Rating: <strong>',$rating,'/5</strong></h5>
                                     <p>',$review,'</p>
                                 </div>
-                                <div id="writtenReview',$reviewid,'"  class="reveal-modal" data-reveal>
+                                <div id="editReview',$reviewid,'"  class="reveal-modal" data-reveal>
                                     <form method="post" class="editReview" data-reviewid="',$reviewid,'">
                                       <h3>Editting review for ',$dish,' from ',$restaurant,'</h3>
                                       <label for="rating">Rating:</label>
@@ -75,7 +77,15 @@ prevent_intruders();
                                       <input class="button" type="submit" value="Update" />
                                       <a class="close-reveal-modal">&#215;</a>
                                     </form>
-                                </div> 
+                                </div>
+                                <div id="deleteReview',$reviewid,'"  class="reveal-modal" data-reveal>
+                                    <form method="post" class="deleteReview" data-reviewid="',$reviewid,'">
+                                        <p>Are you sure you want to delete this review?</p>
+                                        <p id="feedback2',$reviewid,'"></p>
+                                        <input class="button" type="submit" value="Yes" />
+                                        <a class="close-reveal-modal">&#215;</a>
+                                    </form>
+                                </div>
                             </div>
                             ';
                         }
@@ -101,7 +111,16 @@ $(document).ready(function() {
         $.post('functions/updateReview.php', { reviewid: _reviewid, rating: _rating, review: _review }, function(result) {
             $('#feedback' + _reviewid).html(result).show();
         });
-    });    
+    });
+    $('.deleteReview').submit(function(event) {
+        event.preventDefault();
+        var $form = $(this);
+        var _reviewid = String($form.data('reviewid'));
+        $('#feedback2' + _reviewid).load('functions/deleteReview.php').show();
+        $.post('functions/deleteReview.php', { reviewid: _reviewid }, function(result) {
+            $('#feedback2' + _reviewid).html(result).show();
+        });
+    }); 
 }); 
 </script>
 <?php include 'tail.php' ?>
