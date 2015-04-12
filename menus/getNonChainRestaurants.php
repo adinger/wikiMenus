@@ -4,7 +4,7 @@ require 'connect.php'; // The mysql database connection script
 	if(isset($_GET['status'])){
 	$status = $_GET['status'];
 	}
-	$sql ="Select name from chainrestaurant";
+	$sql ="Select name, address from nonchainrestaurant";
 	$result = $mysqli->query($sql);
 	 
 	// echo $result->num_rows;
