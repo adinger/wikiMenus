@@ -40,15 +40,15 @@ require "functions/userfunctions.php";
 		      
 		    </ul>
 		    <ul class="right">
-		      <li><a href="#missionSection">Mission</a></li>
+		      <li><a href="index.php">Mission</a></li>
 		      <li class="divider"></li>
-		      <li><a href="#restrauntSection">Business</a></li>
+		      <li><a href="index.php/#restrauntSection">Business</a></li>
 		      <li class="divider"></li>
-		      <li><a href="#teamSection">Team</a></li>
+		      <li><a href="index.php/#teamSection">Team</a></li>
 		      <li class="divider"></li>
-		      <li><a href="#videoSection">See It In Action</a></li>
+		      <li><a href="index.php/#videoSection">See It In Action</a></li>
 		      <li class="divider"></li>
-		      <li><a href="#contactSection">Contacts</a></li>
+		      <li><a href="index.php/#contactSection">Contacts</a></li>
 		      <li class="divider"></li>
                 <?php
                     if(logged_in()) {
