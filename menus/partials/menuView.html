@@ -1,4 +1,5 @@
 <!-- Latest compiled and minified CSS -->
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
 <!-- Latest compiled and minified JavaScript -->
@@ -141,9 +142,9 @@
 								<div class="rm-content">
 									<h4>Top Appetizers</h4>
 									<dl>
-										<div ng-repeat = "dish in dishes | filter: restaurantName | filter: 'soup' | orderBy: 'averageRating' : true">
-											<dt>{{dish.dishName}} {{dish.price| currency}}</dt>
-											<dd>{{dish.description}} <br/><b> Rating: {{dish.averageRating}} stars </b></dd>
+										<div ng-repeat = "dish in dishes | filter: restaurantName | filter: 'soup' | orderBy: 'averagerating' : true">
+											<dt><a href="../dishprofile.php?dish={{dish.dishid}}"/>{{dish.name}}</a> {{dish.price| currency}}</dt>
+											<dd>{{dish.description}} <br/><b> Rating: {{dish.averagerating}} stars </b></dd>
 										</div>
 										<!-- <dt>Bella's Artichokes</dt>
 										<dd>Roasted artichokes with chipotle aioli and cream cheese</dd>
@@ -162,10 +163,10 @@
 									</dl>
 
 									<h4>Top Sides &amp; More</h4>
-									<dl ng-repeat = "dish in dishes | filter: restaurantName | filter: 'side' | orderBy: 'averageRating' : true">
+									<dl ng-repeat = "dish in dishes | filter: restaurantName | filter: 'side' | orderBy: 'averagerating' : true">
 										<div >
-											<dt>{{dish.dishName}} {{dish.price| currency}}</dt>
-											<dd>{{dish.description}} <br/><b> Rating: {{dish.averageRating}} stars </b></dd>
+											<dt><a href="../dishprofile.php?dish={{dish.dishid}}"/>{{dish.name}}</a> {{dish.price| currency}}</dt>
+											<dd>{{dish.description}} <br/><b> Rating: {{dish.averagerating}} stars </b></dd>
 										</div>
 										<!-- <dt>Green Delight</dt>
 										<dd>Watercress, frisee and avocado salad</dd>
@@ -186,12 +187,12 @@
 						<div class="rm-middle">
 							<div class="rm-inner">
 								<div class="rm-content">
-									<h4>Top Entrees</h4>
-									<dl ng-repeat = "dish in dishes | filter: restaurantName | filter: 'entree' | orderBy: 'averageRating' : true | limitTo:5">
+									<h4>Top 3 Entrees</h4>
+									<dl ng-repeat = "dish in dishes | filter: restaurantName | filter: 'entree' | orderBy: 'averagerating' : true | limitTo:3">
 										<div >
-											<dt>{{dish.dishName}} {{dish.price| currency}}</dt>
-											<dd>{{dish.description}} <br/><b> Rating: {{dish.averageRating}} stars </b></dd>
-											<!-- <span class="glyphicon glyphicon-star" ng-repeat="i in range.slice(0,{{dish.averageRating}}) track by $index"/> -->
+											<dt><a href="../dishprofile.php?dish={{dish.dishid}}"/>{{dish.name}}</a> {{dish.price| currency}}</dt>
+											<dd>{{dish.description}} <br/><b> Rating: {{dish.averagerating}} stars </b></dd>
+											<!-- <span class="glyphicon glyphicon-star" ng-repeat="i in range.slice(0,{{dish.averagerating}}) track by $index"/> -->
 											<!-- <i class="fa fa-star" ng-repeat="i in range.slice(0, 4 ) track by $index"></i> -->
 										</div>
 										<!-- <dt><a href="http://herbivoracious.com/2009/03/panfried-gnocchi-with-arugula-recipe.html" class="rm-viewdetails" data-thumb="images/11.jpg">Crispy Gnocchi with Arugula</a></dt>
@@ -230,13 +231,13 @@
 							</div>
 
 							<div class="rm-back">
-								<span class="rm-close">Close</span>
+								<!-- <span class="rm-close">Close</span> -->
 								<div class="rm-content">
 									<h4>Top Desserts</h4>
-									<dl ng-repeat = "dish in dishes | filter: restaurantName | filter: 'dessert' | orderBy: dish.averageRating : true | limitTo:5">
+									<dl ng-repeat = "dish in dishes | filter: restaurantName | filter: 'dessert' | orderBy: dish.averagerating : true | limitTo:5">
 										<div >
-											<dt>{{dish.dishName}} {{dish.price| currency}}</dt>
-											<dd>{{dish.description}} <br/><b> Rating: {{dish.averageRating}} stars </b></dd>
+											<dt><a href="../dishprofile.php?dish={{dish.dishid}}"/>{{dish.name}}</a> {{dish.price| currency}}</dt>
+											<dd>{{dish.description}} <br/><b> Rating: {{dish.averagerating}} stars </b></dd>
 										</div>
 										<!-- <dt><a href="http://herbivoracious.com/2012/08/crepes-with-roasted-french-plums-yogurt-and-honey.html" class="rm-viewdetails" data-thumb="images/5.jpg">French Plum Crepes</a></dt>
 										<dd>Crepes with roasted french plums, yogurt &amp; honey</dd>
@@ -261,6 +262,7 @@
 									</dl>
 									<div class="rm-order">
 										<p><strong>Would you like us to cater your event?</strong> Call us &amp; we'll help you find a venue and organize the event: <strong>626.511.1170</strong></p>
+										<p>Don't see a Dish.  <a href="../dishRequest.php/?name={{restaurantName}}">Request addition:</a></p>
 									</div>
 								</div><!-- /rm-content -->
 							</div><!-- /rm-back -->

@@ -3,22 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <title>wikiMenus</title>
-  <script src="./lib/angular/angular.min.js"></script>
-  <script src="./js/controllers.js"></script>
+
+ <meta charset="UTF-8">
+  <title>wikiMenus</title>
+  <!-- <script src="./lib/angular/angular.min.js"></script>
+  <script src="./js/app.js"></script>
+  <script src="./js/controllers.js"></script> -->
   <link rel="stylesheet" href="./css/styles.css">
   <link rel="stylesheet" href="./foundation/css/foundation.css">
-  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  
+
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular-route.min.js"></script>
+  <script src="./js/app.js"></script>
+  <script src="./js/controllers.js"></script> 
+
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
   <link rel="shortcut icon" href="data/pics/favicon.ico" type="image/x-icon" />  
   <link href="http://fonts.googleapis.com/css?family=Rancho" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Gudea" rel="stylesheet" type="text/css">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <?php require "db/connect.php"; ?>	<!--connect to database-->
 </head>
 
 
-<body>
+<body ng-app="menuApp" ng-controller="mainPageController">
 	<div class="contain-to-grid sticky">
 		<nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: [small,medium,large]">
 		  <ul class="title-area">
@@ -33,7 +47,7 @@
 		  <section class="top-bar-section">
 		    <!-- Left Nav Section -->
 		     <ul class="left">
-		      <li><a href="#" data-reveal-id="Subscribe">Subscribe</a></li>
+		      <li><a href="./restaurantRequest.php" data-reveal-id="Subscribe">Request New Restaurant</a></li>
 		      
 		    </ul>
 		    <ul class="right">
@@ -54,7 +68,7 @@
 	</div>
 	
 
-	<header class="row">
+	<header id= "mainHeader"class="row">
 			
 		<div class="small-7 small-centered columns backdrop" id="searchBox">
 
@@ -64,7 +78,7 @@
                 <div class="small-10 small-centered columns">
                     <div class="row collapse postfix-radius">
                         <div class="small-10 columns">
-                             <input type="text" placeholder="e.g. McDonald's">
+                            <input id="autocomplete" type="text" placeholder="Restraunt Name, ZipCode, Cusine">
                         </div>
                         <div class="small-2 columns">
                              <a href="#" class="button postfix custom-button-class" id="wikiButton">Go</a>
@@ -405,10 +419,10 @@
 	</div>
 	</div>
 
-  <script src="./js/script.js"></script>
-  <script src="./lib/jquery-2.1.3.min/index.js"></script>
+  <!-- <script src="./js/script.js"></script>
+  // <script src="./lib/jquery-2.1.3.min/index.js"></script> -->
   <script src="./foundation/js/foundation.min.js"></script>
-  <script src="http://localhost:35729/livereload.js"></script>
+  <!--<script src="http://localhost:35729/livereload.js"></script>-->
 </body>
 </html>
 

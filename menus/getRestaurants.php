@@ -4,7 +4,7 @@ require '../db/connect.php'; // The mysql database connection script
 	if(isset($_GET['status'])){
 	$status = $_GET['status'];
 	}
-	$sql ="SELECT * FROM `dish`";
+	$sql ="Select name from restaurants";
 	$result = $db->query($sql);
 	 
 	// echo $result->num_rows;
@@ -13,12 +13,9 @@ require '../db/connect.php'; // The mysql database connection script
 	if($result->num_rows > 0) {
 		 while($row = $result->fetch_assoc()) {
 		 	$arr[] = $row;
-		 	// echo $row['description'];
-
 		 }
 	}
-	
+	 
 	# JSON-encode the response
-
 	echo $json_response = json_encode($arr);
 ?>

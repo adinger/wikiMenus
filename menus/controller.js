@@ -19,7 +19,7 @@ var controller = app.controller('mainPageController', function($scope, $template
  //               },
  //      ];
 
-$http.get("getChainRestaurants.php")
+$http.get("getRestaurants.php")
     .success(function (response) {$scope.restaurants = response;
         
         console.log($scope.restaurants);
@@ -54,7 +54,7 @@ $http.get("getChainRestaurants.php")
 
 app.controller('menuController', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http) {
        
-        $http.get("getChainRestaurants.php")
+        $http.get("getRestaurants.php")
         .success(function (response) {
 
           $scope.restaurants = response;
