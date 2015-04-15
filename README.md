@@ -18,6 +18,8 @@ Github Instructions:
 	1. git add .
 	2. git commit -m "changed stuff"
 	3. git push
+	4. go to your own branch on the github website, click the green button to make a pull request so that others may review/approve/deny your changes.
+- Every time before you start working, you need to commit or "stash" (throw away) your changes, then sync your branch with the origin branch in order to get the most up-to-date changes that everyone else made. To do this, type "git pull upstream master"
+
 	4. go to https://github.com/[your username]/wikiMenus, click the green button at the top left of the page to make a pull request so that others may review/approve/deny your changes before merging onto danish's branch.
-    
-For a more detailed explanation, watch this github tutorial for Mac OSX: https://www.youtube.com/watch?v=0fKg7e37bQE 
+

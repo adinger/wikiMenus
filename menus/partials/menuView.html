@@ -1,83 +1,66 @@
 <!-- Latest compiled and minified CSS -->
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-<!-- <dt ng-repeat = "dish in dishes | filter: restaurant | filter: 'soup'">
+<!-- <dt ng-repeat = "dish in dishes | filter: restaurantName | filter: 'soup'">
 											{{dish.name}}
 </dt> -->
-<!-- <h1>{{restaurant}}</h1>
-
-
+<!-- <h1>{{restaurantName}}</h1>
 	<div class="small-3 columns">
-
 		<ul> 
 			<h1> Entree </h1>
-			<li ng-repeat = "dish in dishes | filter: restaurant | filter: 'entree'" >
+			<li ng-repeat = "dish in dishes | filter: restaurantName | filter: 'entree'" >
 			
 				
-				{{dish.name}}
+				{{dish.dishName}}
 				{{dish.price}}
 				{{dish.course}}
 		
-
 			</li>
-
 		</ul>
-
 	</div>
-
 	<div class="small-3 columns">
 		<h1> Soup</h1>
 		<ul> 
-			<li ng-repeat = "dish in dishes | filter: restaurant | filter: 'soup'" >
+			<li ng-repeat = "dish in dishes | filter: restaurantName | filter: 'soup'" >
 			
 				
-				{{dish.name}}
+				{{dish.dishName}}
 				{{dish.price}}
 				{{dish.course}}
 			
-
 			</li>
-
 		</ul>
-
 	</div>
-
 	<div class="small-3 columns">
 		<h1> Side</h1>
 		<ul> 
-			<li ng-repeat = "dish in dishes | filter: restaurant | filter: 'side'" >
+			<li ng-repeat = "dish in dishes | filter: restaurantName | filter: 'side'" >
 			
 				
-				{{dish.name}}
+				{{dish.dishName}}
 				price: {{dish.price | currency}}
 				{{dish.course}}
 			
-
 			</li>
-
 		</ul>
-
 	</div>
-
 	<div class="small-3 columns">
 		<h1> Dessert</h1>
 		<ul> 
-			<li ng-repeat = "dish in dishes | filter: restaurant | filter: 'side'" >
+			<li ng-repeat = "dish in dishes | filter: restaurantName | filter: 'side'" >
 			
 				
-				{{dish.name}}
+				{{dish.dishName}}
 				{{dish.price}}
 				{{dish.course}}
 			
-
 			</li>
-
 		</ul>
-
 	</div>
  -->
 
@@ -141,19 +124,16 @@
 								<div class="rm-content">
 									<h4>Top Appetizers</h4>
 									<dl>
-										<div ng-repeat = "dish in dishes | filter: restaurant | filter: 'soup' | orderBy: 'averagerating' : true">
-											<dt>{{dish.name}} {{dish.price| currency}}</dt>
+										<div ng-repeat = "dish in dishes | filter: restaurantName | filter: 'soup' | orderBy: 'averagerating' : true">
+											<dt><a href="../dishprofile.php?dish={{dish.dishid}}"/>{{dish.name}}</a> {{dish.price| currency}}</dt>
 											<dd>{{dish.description}} <br/><b> Rating: {{dish.averagerating}} stars </b></dd>
 										</div>
 										<!-- <dt>Bella's Artichokes</dt>
 										<dd>Roasted artichokes with chipotle aioli and cream cheese</dd>
-
 										<dt>Bruschetta Blue Delight</dt>
 										<dd>Blue cheese and citrus bruschetta</dd>
-
 										<dt>Pomme Dulse</dt>
 										<dd>Baked potatoes with crisped dulse</dd>
-
 										<dt><a href="http://herbivoracious.com/2011/11/crostini-with-young-pecorino-grilled-figs-and-arugula-mint-pesto-recipe.html" class="rm-viewdetails" data-thumb="images/1.jpg">Green Love Crostini</a></dt>
 										<dd>Crostini with young pecorino, grilled figs and arugula &amp; mint pesto</dd>
 										
@@ -162,17 +142,15 @@
 									</dl>
 
 									<h4>Top Sides &amp; More</h4>
-									<dl ng-repeat = "dish in dishes | filter: restaurant | filter: 'side' | orderBy: 'averagerating' : true">
+									<dl ng-repeat = "dish in dishes | filter: restaurantName | filter: 'side' | orderBy: 'averagerating' : true">
 										<div >
-											<dt>{{dish.name}} {{dish.price| currency}}</dt>
+											<dt><a href="../dishprofile.php?dish={{dish.dishid}}"/>{{dish.name}}</a> {{dish.price| currency}}</dt>
 											<dd>{{dish.description}} <br/><b> Rating: {{dish.averagerating}} stars </b></dd>
 										</div>
 										<!-- <dt>Green Delight</dt>
 										<dd>Watercress, frisee and avocado salad</dd>
-
 										<dt><a href="http://herbivoracious.com/2010/02/thai-tofu-salad-recipe.html" class="rm-viewdetails" data-thumb="images/13.jpg">Gourmet Yam Taohu</a></dt>
 										<dd>Thai tofu salad yam taohu</dd>
-
 										<dt>Panini Deluxe</dt>
 										<dd>Buffalo mozzarella basil panini</dd> -->
 									</dl>
@@ -186,26 +164,22 @@
 						<div class="rm-middle">
 							<div class="rm-inner">
 								<div class="rm-content">
-									<h4>Top Entrees</h4>
-									<dl ng-repeat = "dish in dishes | filter: restaurant | filter: 'entree' | orderBy: 'averagerating' : true | limitTo:5">
+									<h4>Top 3 Entrees</h4>
+									<dl ng-repeat = "dish in dishes | filter: restaurantName | filter: 'entree' | orderBy: 'averagerating' : true | limitTo:3">
 										<div >
-											<dt>{{dish.name}} {{dish.price| currency}}</dt>
+											<dt><a href="../dishprofile.php?dish={{dish.dishid}}"/>{{dish.name}}</a> {{dish.price| currency}}</dt>
 											<dd>{{dish.description}} <br/><b> Rating: {{dish.averagerating}} stars </b></dd>
 											<!-- <span class="glyphicon glyphicon-star" ng-repeat="i in range.slice(0,{{dish.averagerating}}) track by $index"/> -->
 											<!-- <i class="fa fa-star" ng-repeat="i in range.slice(0, 4 ) track by $index"></i> -->
 										</div>
 										<!-- <dt><a href="http://herbivoracious.com/2009/03/panfried-gnocchi-with-arugula-recipe.html" class="rm-viewdetails" data-thumb="images/11.jpg">Crispy Gnocchi with Arugula</a></dt>
 										<dd>Pan-fried potato gnocchi with arugula salad</dd>
-
 										<dt>Sea Palm Spicy Peanut Curry</dt>
 										<dd>Tender sea palm noodles, seasoned vegetables, spicy peanut curry and tempeh fenel croquettes</dd>
-
 										<dt><a href="http://herbivoracious.com/2012/09/caviar-lentil-salad-with-arugula-crispy-shallots-and-roasted-garlic-recipe.html" class="rm-viewdetails" data-thumb="images/8.jpg">Lentil Caviar &amp; Arugula</a></dt>
 										<dd>Black lentil curry with arugula salad, caramelized shallots and roasted garlic</dd>
-
 										<dt>Tamari-Maple Glazed Tofu</dt>
 										<dd>Wasabi emulsion, sesame seeds and scallions</dd>
-
 										<dt>Maple Barbeque Tofu</dt>
 										<dd>Grilled marinated tofu, maple barbeque sauce, tahini slaw, grilled seasonal vegetables and mashed potatoes</dd>
 																													
@@ -230,12 +204,12 @@
 							</div>
 
 							<div class="rm-back">
-								<span class="rm-close">Close</span>
+								<!-- <span class="rm-close">Close</span> -->
 								<div class="rm-content">
 									<h4>Top Desserts</h4>
-									<dl ng-repeat = "dish in dishes | filter: restaurant | filter: 'dessert' | orderBy: dish.averagerating : true | limitTo:5">
+									<dl ng-repeat = "dish in dishes | filter: restaurantName | filter: 'dessert' | orderBy: dish.averagerating : true | limitTo:5">
 										<div >
-											<dt>{{dish.name}} {{dish.price| currency}}</dt>
+											<dt><a href="../dishprofile.php?dish={{dish.dishid}}"/>{{dish.name}}</a> {{dish.price| currency}}</dt>
 											<dd>{{dish.description}} <br/><b> Rating: {{dish.averagerating}} stars </b></dd>
 										</div>
 										<!-- <dt><a href="http://herbivoracious.com/2012/08/crepes-with-roasted-french-plums-yogurt-and-honey.html" class="rm-viewdetails" data-thumb="images/5.jpg">French Plum Crepes</a></dt>
@@ -261,6 +235,7 @@
 									</dl>
 									<div class="rm-order">
 										<p><strong>Would you like us to cater your event?</strong> Call us &amp; we'll help you find a venue and organize the event: <strong>626.511.1170</strong></p>
+										<p>Don't see a Dish.  <a href="../dishRequest.php/?name={{restaurantName}}">Request addition:</a></p>
 									</div>
 								</div><!-- /rm-content -->
 							</div><!-- /rm-back -->
@@ -278,9 +253,7 @@
         <script type="text/javascript" src="js/menu.js"></script>
 		<script type="text/javascript">
 			$(function() {
-
 				Menu.init();
 			
 			});
 		</script>
- 

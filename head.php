@@ -36,19 +36,19 @@ require "functions/userfunctions.php";
 		  <section class="top-bar-section">
 		    <!-- Left Nav Section -->
 		     <ul class="left">
-		      <li><a href="#" data-reveal-id="Subscribe">Subscribe</a></li>
+		       <li><a href="./restaurantRequest.php" data-reveal-id="Subscribe">Request New Restaurant</a></li>
 		      
 		    </ul>
 		    <ul class="right">
-		      <li><a href="index.php">Mission</a></li>
+		      <li><a href="/wikimenus">Mission</a></li>
 		      <li class="divider"></li>
-		      <li><a href="index.php/#restrauntSection">Business</a></li>
+		      <li><a href="/wikimenus/#restrauntSection">Business</a></li>
 		      <li class="divider"></li>
-		      <li><a href="index.php/#teamSection">Team</a></li>
+		      <li><a href="/wikimenus/#teamSection">Team</a></li>
 		      <li class="divider"></li>
-		      <li><a href="index.php/#videoSection">See It In Action</a></li>
+		      <li><a href="/wikimenus/#videoSection">See It In Action</a></li>
 		      <li class="divider"></li>
-		      <li><a href="index.php/#contactSection">Contacts</a></li>
+		      <li><a href="/wikimenus/#contactSection">Contacts</a></li>
 		      <li class="divider"></li>
                 <?php
                     if(logged_in()) {
