@@ -4,6 +4,7 @@ require '../db/connect.php'; // The mysql database connection script
 	if(isset($_GET['status'])){
 	$status = $_GET['status'];
 	}
+
 	$sql ="SELECT * FROM `dish`";
 	$result = $db->query($sql);
 	 

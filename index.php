@@ -89,20 +89,22 @@
             
             <h4 class="text-center" style="color:white">- OR -</h4>
             <h3 class="text-center" style="color:white">What would you like to eat today?</h3>
+            
             <div class="row collapse postfix-radius">
                 <div class="small-10 small-centered columns">
-                    <div class="row collapse postfix-radius">
-                        <div class="small-10 columns">
-                             <input type="text" placeholder="e.g. hamburger">
+                    <form method="post" action="tagSearch.php">
+                        <div class="row collapse postfix-radius">
+                            <div class="small-10 columns">
+                                 <input name="tag" type="text" placeholder="e.g. hamburger" required>
+                            </div>
+                            <div class="small-2 columns">
+                                <input class="button postfix custom-button-class" id="wikiButton" type="submit">Go</input>
+                            </div>
                         </div>
-                        <div class="small-2 columns">
-                             <a href="#" class="button postfix custom-button-class" id="wikiButton">Go</a>
-                        </div>
-                    </div>
+                    </form>
                 </div>
-			</div>
-
-		</div>
+            </div>                
+        </div>
 	</header>
 	<!-- <div id="missionAnchor"></div> -->
 	<div class="row" id="missionSection">
