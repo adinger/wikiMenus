@@ -8,7 +8,7 @@ if (isset($_POST['rating']) && isset($_POST['review'])) {
     $reviewid = $_POST['reviewid'];
     $update = $db->prepare("
         UPDATE review
-        SET numericalrating='?', verbalreview='?'
+        SET numericalrating=?, verbalreview=?
         WHERE reviewid='$reviewid'
     ");
     $update->bind_param('ds', $rating, $review);    // "ds" = double, String
