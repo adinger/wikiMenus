@@ -122,9 +122,9 @@
 
 							<div class="rm-back">
 								<div class="rm-content">
-									<h4>Top Appetizers</h4>
+									<h4>Top 2 Appetizers</h4>
 									<dl>
-										<div ng-repeat = "dish in dishes | filter: restaurantName | filter: 'soup' | orderBy: 'averagerating' : true">
+										<div ng-repeat = "dish in dishes | filter: restaurantName | filter: 'Appetizer' | orderBy: 'averagerating' : true | limitTo:2 ">
 											<dt><a href="../dishprofile.php?dish={{dish.dishid}}"/>{{dish.name}}</a> {{dish.price| currency}}</dt>
 											<dd>{{dish.description}} <br/><b> Rating: {{dish.averagerating}} stars </b></dd>
 										</div>
@@ -141,8 +141,8 @@
 										<dd>Artichoke focaccia with fresh thyme</dd> -->
 									</dl>
 
-									<h4>Top Sides &amp; More</h4>
-									<dl ng-repeat = "dish in dishes | filter: restaurantName | filter: 'side' | orderBy: 'averagerating' : true">
+									<h4>Top 2 Beverages &amp; More</h4>
+									<dl ng-repeat = "dish in dishes | filter: restaurantName | filter: 'Beverage' | orderBy: 'averagerating' : true | limitTo:2">
 										<div >
 											<dt><a href="../dishprofile.php?dish={{dish.dishid}}"/>{{dish.name}}</a> {{dish.price| currency}}</dt>
 											<dd>{{dish.description}} <br/><b> Rating: {{dish.averagerating}} stars </b></dd>
@@ -165,7 +165,7 @@
 							<div class="rm-inner">
 								<div class="rm-content">
 									<h4>Top 3 Entrees</h4>
-									<dl ng-repeat = "dish in dishes | filter: restaurantName | filter: 'entree' | orderBy: 'averagerating' : true | limitTo:3">
+									<dl ng-repeat = "dish in dishes | filter: restaurantName | filter: 'Entree' | orderBy: 'averagerating' : true | limitTo:3">
 										<div >
 											<dt><a href="../dishprofile.php?dish={{dish.dishid}}"/>{{dish.name}}</a> {{dish.price| currency}}</dt>
 											<dd>{{dish.description}} <br/><b> Rating: {{dish.averagerating}} stars </b></dd>
@@ -206,8 +206,8 @@
 							<div class="rm-back">
 								<!-- <span class="rm-close">Close</span> -->
 								<div class="rm-content">
-									<h4>Top Desserts</h4>
-									<dl ng-repeat = "dish in dishes | filter: restaurantName | filter: 'dessert' | orderBy: dish.averagerating : true | limitTo:5">
+									<h4>Top 3 Desserts</h4>
+									<dl ng-repeat = "dish in dishes | filter: restaurantName | filter: 'Dessert' | orderBy: dish.averagerating : true | limitTo:2">
 										<div >
 											<dt><a href="../dishprofile.php?dish={{dish.dishid}}"/>{{dish.name}}</a> {{dish.price| currency}}</dt>
 											<dd>{{dish.description}} <br/><b> Rating: {{dish.averagerating}} stars </b></dd>
@@ -235,7 +235,7 @@
 									</dl>
 									<div class="rm-order">
 										<p><strong>Would you like us to cater your event?</strong> Call us &amp; we'll help you find a venue and organize the event: <strong>626.511.1170</strong></p>
-										<p>Don't see a Dish.  <a href="../dishRequest.php/?name={{restaurantName}}">Request addition:</a></p>
+										<p>Don't see a Dish? <a href="../dishRequest.php?name={{restaurantName}}">Request an addition.</a></p>
 									</div>
 								</div><!-- /rm-content -->
 							</div><!-- /rm-back -->

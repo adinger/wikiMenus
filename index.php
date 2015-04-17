@@ -72,8 +72,9 @@
 			
 		<div class="small-7 small-centered columns backdrop" id="searchBox">
 
-			<h2 id="dynamicText" class="text-center"></h2>
-
+			<!--<h2 id="dynamicText" class="text-center"></h2>-->
+            <h3 class="text-center" style="margin-top:70px;color:white">Where would you like to eat?</h3>
+            
             <div class="row collapse postfix-radius">
                 <div class="small-10 small-centered columns">
                     <div class="row collapse postfix-radius">
@@ -87,8 +88,7 @@
                 </div>
 			</div>
             
-            <h4 class="text-center" style="color:white">- OR -</h4>
-            <h3 class="text-center" style="color:white">What would you like to eat today?</h3>
+            <h3 class="text-center" style="color:white">What would you like to eat?</h3>
             
             <div class="row collapse postfix-radius">
                 <div class="small-10 small-centered columns">
@@ -98,12 +98,30 @@
                                  <input name="tag" type="text" placeholder="e.g. hamburger" required>
                             </div>
                             <div class="small-2 columns">
-                                <input class="button postfix custom-button-class" id="wikiButton" type="submit">Go</input>
+                                <input class="button postfix custom-button-class" id="wikiButton" type="submit"></input>
                             </div>
                         </div>
                     </form>
                 </div>
-            </div>                
+            </div>
+            
+            <h3 class="text-center" style="color:white">Find a user:</h3>
+            
+            <div class="row collapse postfix-radius">
+                <div class="small-10 small-centered columns">
+                    <form method="post" action="functions/finduser.php">
+                        <div class="row collapse postfix-radius">
+                            <div class="small-10 columns">
+                                 <input name="username" type="text" placeholder="e.g. aprilxu2" required>
+                            </div>
+                            <div class="small-2 columns">
+                                <input class="button postfix custom-button-class" id="wikiButton" type="submit"></input>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        
         </div>
 	</header>
 	<!-- <div id="missionAnchor"></div> -->

@@ -1,18 +1,20 @@
 <?php
 include "head.php";
-prevent_intruders();
+if(isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
+    header('Location: admin.php');
+}
 ?>
 <div class="row">
 	<div class="small-10 small-centered columns floating">
 		<div class="small-12 medium-4 columns profile-info">
-			<div class="profilepic">
+			<!--<div class="profilepic">
 				<a href="" class="th"><img src="data/pics/profPicPlaceholder.jpg" alt="alt"></a>
-			</div>
-			<h2 class="username-title"><strong><?php echo $_SESSION['username'] ?></strong></h2>
+			</div>-->
+			<h2 class="username-title"><strong><?php echo $_GET['username'] ?></strong></h2>
             
 			<p><strong>Favorite Restaurants:</strong><br>
             <?php 
-            $restaurant = get_fave_restaurant($db, $_SESSION["username"]);
+            $restaurant = get_fave_restaurant($db, $_GET["username"]);
             if($restaurant) {
                 if($count = $restaurant->num_rows) {
                     while($row = $restaurant->fetch_object()) {
@@ -25,7 +27,7 @@ prevent_intruders();
             </p>
 			<p><strong>Favorite Dishes:</strong><br>
             <?php 
-            $dish = get_fave_dish($db, $_SESSION["username"]);
+            $dish = get_fave_dish($db, $_GET["username"]);
             if($dish) {
                 if($count = $dish->num_rows) {
                     while($row = $dish->fetch_object()) {
@@ -41,10 +43,10 @@ prevent_intruders();
 		<div class="small-12 medium-8 columns">
 			<div class="panel">
 				<h4 class="username-title text-center"><strong>
-                    <?php echo $_SESSION['username'], "'s Reviews" ?>
+                    <?php echo $_GET['username'], "'s Reviews" ?>
                 </strong></h4>
                 <?php
-                $result = get_users_reviews($db, $_SESSION["username"]);
+                $result = get_users_reviews($db, $_GET["username"]);
                 if($result) {
                     if($count = $result->num_rows) {
                         while($row = $result->fetch_object()) {
@@ -57,10 +59,14 @@ prevent_intruders();
                             <hr>
                             <div class="usersReview row">
                                 <div class="small-11 small-centered columns">
-                                    <h5 class="dishName"><strong>',$dish,'</strong> from <strong>',$restaurant,'</strong>
-                                    &nbsp;&nbsp;&nbsp;<a href="#" data-reveal-id="editReview',$reviewid,'">Edit</a>
-                                    &nbsp;&nbsp;&nbsp;<a href="#" data-reveal-id="deleteReview',$reviewid,'">Delete</a>
-                                    </h5>
+                                    <h5 style="display: inline" class="dishName"><strong><a href="dishprofile.php?dish='.$row->dishid.'">',$dish,'</a></strong> from <strong><a href="menus/#/menu/'.$restaurant.'">',$restaurant,'</a></strong></h5>
+                                    ';
+                            if( isset($_SESSION['username']) ) {  // only display 'edit' and 'delete buttons when user is logged in
+                               echo '<p><a href="#" data-reveal-id="editReview',$reviewid,'">Edit</a>
+                                    &nbsp;&nbsp;<a href="#" data-reveal-id="deleteReview',$reviewid,'">Delete</a>
+                                    </p>';
+                            }
+                            echo '
                                     <h5>Rating: <strong>',$rating,'/5</strong></h5>
                                     <p>',$review,'</p>
                                 </div>

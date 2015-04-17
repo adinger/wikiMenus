@@ -12,7 +12,7 @@
                 if(!empty($tag)) {
                     echo '<h3>Search results for "'.$temp.'":</h3>';
                     $results = $db->query("
-                        SELECT dish.name AS dish, restaurants.name AS restaurant
+                        SELECT dish.dishid AS dishid, dish.name AS dish, restaurants.name AS restaurant
                         FROM dish, restaurants, dishesandtags, tags
                         WHERE tags.tag = '$tag'
                         AND dishesandtags.dishid = dish.dishid
@@ -22,7 +22,7 @@
                         if($results->num_rows) {
                             echo '<ul>';
                             while($row = $results->fetch_object()) {
-                                echo '<li><b>'. ucwords($row->dish).'</b> from '.ucwords($row->restaurant).'</li>';
+                                echo '<li><b><a href="dishprofile.php?dish='.$row->dishid.'">'.ucwords($row->dish).'</a></b> from '.ucwords($row->restaurant).'</li>';
                             }
                             echo '</ul>';
                         }

@@ -22,7 +22,7 @@ require "functions/userfunctions.php";
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 <body>
-    	<div class="contain-to-grid sticky">
+    <div class="contain-to-grid sticky">
 		<nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: [small,medium,large]">
 		  <ul class="title-area">
 		    <li class="name">
@@ -40,15 +40,15 @@ require "functions/userfunctions.php";
 		      
 		    </ul>
 		    <ul class="right">
-		      <li><a href="/wikimenus">Mission</a></li>
+		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#missionSection">Mission</a></li>
 		      <li class="divider"></li>
-		      <li><a href="/wikimenus/#restrauntSection">Business</a></li>
+		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#restrauntSection">Business</a></li>
 		      <li class="divider"></li>
-		      <li><a href="/wikimenus/#teamSection">Team</a></li>
+		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#teamSection">Team</a></li>
 		      <li class="divider"></li>
-		      <li><a href="/wikimenus/#videoSection">See It In Action</a></li>
+		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#videoSection">See It In Action</a></li>
 		      <li class="divider"></li>
-		      <li><a href="/wikimenus/#contactSection">Contacts</a></li>
+		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#contactSection">Contacts</a></li>
 		      <li class="divider"></li>
                 <?php
                     if(logged_in()) {

@@ -50,15 +50,15 @@ require "../functions/userfunctions.php";
           
         </ul>
         <ul class="right">
-          <li><a href="/wikimenus">Mission</a></li>
+          <li><a href="~alding2/wikimenus">Mission</a></li>
           <li class="divider"></li>
-          <li><a href="/wikimenus/#restrauntSection">Business</a></li>
+          <li><a href="~alding2/wikimenus/#restrauntSection">Business</a></li>
           <li class="divider"></li>
-          <li><a href="/wikimenus/#teamSection">Team</a></li>
+          <li><a href="~alding2/wikimenus/#teamSection">Team</a></li>
           <li class="divider"></li>
-          <li><a href="/wikimenus/#videoSection">See It In Action</a></li>
+          <li><a href="~alding2/wikimenus/#videoSection">See It In Action</a></li>
           <li class="divider"></li>
-          <li><a href="/wikimenus/#contactSection">Contacts</a></li>
+          <li><a href="~alding2/wikimenus/#contactSection">Contacts</a></li>
           <li class="divider"></li>
                 <?php
                     if(logged_in()) {

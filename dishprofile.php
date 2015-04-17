@@ -27,19 +27,19 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 	?>
 	(Tax not included)<div>
 </h3>
-<h3 class = "username-title">
+<h4 class = "username-title" style="display:inline">Tags:
+    
 	<?php
 		$t = $db->query("SELECT tagid FROM dishesandtags WHERE dishid = $_GET[dish]");
 		while($row = $t->fetch_assoc()){
 			$tag = $db->query("SELECT tag FROM tags WHERE tagid = $row[tagid]");
 			$tags = $tag->fetch_assoc()['tag'];
-			echo "Tags: ";
-			echo $tags;
+			echo ' '.$tags;
 			$tag->free();
 		}
 		$t->free();
 	?>
-</h3>
+</h4>
 <blockquote><p>
 	<?php
 		$d = $db->query("SELECT description FROM dish WHERE dishid = $_GET[dish]");
@@ -59,8 +59,9 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 					$restaurant = $db->query("SELECT id FROM restaurants WHERE name = '$rname'");
 					$rid = $restaurant->fetch_assoc()['id'];
 					echo "<input type='hidden' name='restaurant' value='".$rid."'>";
+                    if($_SESSION['username'] != 'admin') echo '<button type="submit">Write a Review</button>';
 				?>
-			    <button type="submit">Write a Review</button>
+			    
 			</form>
 		</div>
 	<div class= "usersreview">

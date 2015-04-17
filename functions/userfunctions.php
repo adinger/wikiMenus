@@ -17,7 +17,7 @@ function username_exists($db, $username) {
 }
 function get_users_reviews($db, $username) {
     $result = $db->query("
-        SELECT dish.name, dish.restaurant, review.numericalrating, review.verbalreview, review.reviewid
+        SELECT dish.dishid, dish.name, dish.restaurant, review.numericalrating, review.verbalreview, review.reviewid
         FROM dish, review, dishreview
         WHERE dishreview.useremail = (
             SELECT email
@@ -85,6 +85,17 @@ function prevent_intruders() {
 		echo '
         <div class="small-10 small-centered columns floating">
         <h4>You must be logged in to access the contents of this page.</h4>
+		<h4>Please <a href="loginform.php">log in</a>.</h4>
+        </div>';
+		exit();
+	}
+}
+
+function prevent_intruders_admin() {
+	if (!logged_in() || $_SESSION['username'] != 'admin') {
+		echo '
+        <div class="small-10 small-centered columns floating">
+        <h4>You must be logged in as an administrator access the contents of this page.</h4>
 		<h4>Please <a href="loginform.php">log in</a>.</h4>
         </div>';
 		exit();

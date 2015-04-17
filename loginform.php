@@ -6,7 +6,7 @@
 		<div class="small-10 small-centered columns floating">
             <?php
             if(isset($_SESSION['username'])) {
-                echo "<p>You're already logged in.</p>";
+                header('Location: userprofile.php');
             } else {
             ?>
             <div class="small-12 medium-6 columns">
@@ -22,7 +22,8 @@
 								WHERE username='$username' AND password='$password'")) {
 								if($results->num_rows) {
 									$_SESSION['username'] = $username;
-									header('Location: userprofile.php');
+                                    $str = 'Location: userprofile.php?username='.$username;
+									header($str);
 								}
 								$results->free();
 							}
