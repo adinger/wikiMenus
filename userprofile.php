@@ -61,7 +61,7 @@ if(isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                                 <div class="small-11 small-centered columns">
                                     <h5 style="display: inline" class="dishName"><strong><a href="dishprofile.php?dish='.$row->dishid.'">',$dish,'</a></strong> from <strong><a href="menus/#/menu/'.$restaurant.'">',$restaurant,'</a></strong></h5>
                                     ';
-                            if( isset($_SESSION['username']) ) {  // only display 'edit' and 'delete buttons when user is logged in
+                            if( isset($_SESSION['username']) && $_SESSION['username'] == $_GET['username']) {  // only display 'edit' and 'delete buttons when user is logged in
                                echo '<p><a href="#" data-reveal-id="editReview',$reviewid,'">Edit</a>
                                     &nbsp;&nbsp;<a href="#" data-reveal-id="deleteReview',$reviewid,'">Delete</a>
                                     </p>';

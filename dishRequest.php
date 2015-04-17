@@ -5,7 +5,7 @@ require "db/connect.php";
 session_start(); 
 require "functions/userfunctions.php";
 //$FORM['name'] = "";
- if (!empty(htmlspecialchars($_GET['name']))) {
+ if (isset($_GET['name'])) {
    $temp = htmlspecialchars($_GET['name']);
 }
 
