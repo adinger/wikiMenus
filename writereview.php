@@ -10,11 +10,12 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 ?>
 
 <html>
-<center><h2>Write A Review</h1></center>
+<center><h2 class="username-title">Write A Review</h2></center>
 	<div class="small-10 small-centered columns floating">
+		<div class = "reviewform">
 	<fieldset>
 	<form method = "post", id = "review">
-		<h3>Review a Dish for 
+		<h3 class = "username-title">Review a Dish for 
 			<?php 
 			$name = $db->query("SELECT name FROM restaurants WHERE id = $_GET[restaurant]");
 			$restaurant = ucwords($name->fetch_assoc()['name']);
@@ -48,6 +49,7 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 		<button type = "submit" id="reviewsubmit">Submit Review</button>
 	</form>
 	</fieldset>
+</div>
 
 <?php
 	if(!empty($_POST)) {
