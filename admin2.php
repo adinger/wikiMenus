@@ -61,9 +61,10 @@ require "functions/userfunctions.php";
 		  </section>
 		</nav>
 	</div>
-
-<?php prevent_intruders_admin(); ?>
+    
+    <?php prevent_intruders_admin(); ?>
 	<h1 style="color: #8B0000" align="center"> Pending Restaurant Requests </h1>
+    <p align="center"><a href="admin.php">Pending Dish Requests</a></p>
 	<hr>
 
 	<?php
