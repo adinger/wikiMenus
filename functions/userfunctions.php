@@ -95,7 +95,7 @@ function prevent_intruders_admin() {
 	if (!logged_in() || $_SESSION['username'] != 'admin') {
 		echo '
         <div class="small-10 small-centered columns floating">
-        <h4>You must be logged in as an administrator access the contents of this page.</h4>
+        <h4>You must be logged in as an administrator to access the contents of this page.</h4>
 		<h4>Please <a href="loginform.php">log in</a>.</h4>
         </div>';
 		exit();

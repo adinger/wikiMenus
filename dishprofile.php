@@ -52,13 +52,14 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 <div class="panel">
 	<center><h2 style = "float:center" class ="username-title">Reviews</h3></center>
 		<div style = "float:right">
-			<form method = "get" action="writereview.php?restaurant ='.$rid. '">
+			<form method = "get" action="writereview.php">
 				<?php 
 					$r = $db->query("SELECT restaurant FROM dish WHERE dishid = $_GET[dish]");
 					$rname = $db->real_escape_string($r->fetch_assoc()['restaurant']);
 					$restaurant = $db->query("SELECT id FROM restaurants WHERE name = '$rname'");
 					$rid = $restaurant->fetch_assoc()['id'];
 					echo "<input type='hidden' name='restaurant' value='".$rid."'>";
+                    echo "<input type='hidden' name='dishname' value='".$dish."'>";
                     if($_SESSION['username'] != 'admin') echo '<button type="submit">Write a Review</button>';
 				?>
 			    

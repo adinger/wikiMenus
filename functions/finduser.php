@@ -1,5 +1,5 @@
 <?php 
-include 'head.php';
+include '../head.php';
 
 if(!empty($_POST)) {
     if(isset($_POST['username'])) {
@@ -10,6 +10,6 @@ if(!empty($_POST)) {
     } else echo 'post is not set';
 } else echo 'post is empty';
 
-include 'tail.php';
+include '../tail.php';
 
 ?>

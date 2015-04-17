@@ -79,7 +79,7 @@
                 <div class="small-10 small-centered columns">
                     <div class="row collapse postfix-radius">
                         <div class="small-10 columns">
-                            <input id="autocomplete" type="text" placeholder="Restraunt Name, ZipCode, Cusine">
+                            <input id="autocomplete" type="text" placeholder="e.g. McDonald's">
                         </div>
                         <div class="small-2 columns">
                              <a href="#" class="button postfix custom-button-class" id="wikiButton">Go</a>
