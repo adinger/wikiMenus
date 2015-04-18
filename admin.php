@@ -40,15 +40,15 @@ require "functions/userfunctions.php";
 		      
 		    </ul>
 		    <ul class="right">
-		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#missionSection">Mission</a></li>
+		      <li><a href="/wikimenus">Mission</a></li>
 		      <li class="divider"></li>
-		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#restrauntSection">Business</a></li>
+		      <li><a href="/wikimenus/#restrauntSection">Business</a></li>
 		      <li class="divider"></li>
-		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#teamSection">Team</a></li>
+		      <li><a href="/wikimenus/#teamSection">Team</a></li>
 		      <li class="divider"></li>
-		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#videoSection">See It In Action</a></li>
+		      <li><a href="/wikimenus/#videoSection">See It In Action</a></li>
 		      <li class="divider"></li>
-		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#contactSection">Contacts</a></li>
+		      <li><a href="/wikimenus/#contactSection">Contacts</a></li>
 		      <li class="divider"></li>
                 
                 <?php
@@ -64,13 +64,13 @@ require "functions/userfunctions.php";
 		</nav>
 	</div>
 
-<?php prevent_intruders_admin(); ?>
 	<h1 style="color: #8B0000" align="center"> Pending Dish Requests </h1>
-    <p align="center"><a href="admin2.php">Pending Restaurant Requests</a></p>
+	    <p align="center"><a href="admin2.php">Pending Restaurant Requests</a></p>
 	<hr>
 
 
 	<?php
+
 $sql = "SELECT * FROM dishrequests";
 $result = $db->query($sql);
 if($result->num_rows > 0) {
@@ -133,10 +133,9 @@ else {
 ?>
 
 <?php
-	require_once 'db/connect.php';
-
-if(isset($_POST['submit']) && isset($_SERVER['REQUEST_URI'])) {
-	header ('Location: ' . $_SERVER['REQUEST_URI']);
+if(isset($_POST['submit'])) {
+	//header ('Location: ' . $_SERVER['REQUEST_URI']);
+	
 	$id = $_POST['id'];
 	$restaurant = $_POST['restaurant'];
 	$dish = $_POST['dishName'];	
@@ -148,19 +147,28 @@ if(isset($_POST['submit']) && isset($_SERVER['REQUEST_URI'])) {
 	$price = $_POST['price'];
 	$rating = $_POST['rating'];
 	$description = $_POST['description'];
-	$dishAdd = "INSERT INTO dish(restaurant, name, price, averagerating, course, description) 
-	VALUES ('$restaurant', '$dish', '$price', '$rating', '$course', '$description')";
-	$tagAdd = "INSERT INTO tags(tag) VALUES ('$type')";
-	$db->query($dishAdd);	
+    //$restaurant = htmlspecialchars($_GET['name']);
+	$dishAdd = $db->prepare("INSERT INTO dish(restaurant, name, price, averagerating, course, description) VALUES (?, ?, ?, ?, ?, ?)");
+	$dishAdd->bind_param('ssiiss', $restaurant, $dish, $price, $rating, $course, $description);
+	$dishAdd->execute();
+    //echo 'dishAdd query:' . $dishAdd;
+	/*$tagAdd = $db->prepare("INSERT INTO tags(tag) VALUES (?)";
+	$tagAdd->bind_param('s', $type);
+	$tagAdd->execute();
+	*/
+	//$r = $db->query($dishAdd);	
+    //if(!$r) echo $db->error;
 	//the line above will add the dish to the database
 
 	foreach($parsedType as $v) {
 		$finalType = str_replace(",", " ", $v);
-		$tagadd = "INSERT INTO tags(tag) VALUES('$finalType')";
-		$db->query($tagadd);
+       // echo 'finaltype: ' . $finalType;
+		$tagAdd = $db->prepare("INSERT INTO tags(tag) VALUES (?)");
+		$tagAdd->bind_param('s', $finalType);
+		$tagAdd->execute();
 	}
 
-
+// FIX RESTAURANT NAME APOSTROPHE'S ISSUE
 	//dishes and tags implementation ... fragile don't change
 //-------------------------------
 	$identity = "";
@@ -168,8 +176,8 @@ if(isset($_POST['submit']) && isset($_SERVER['REQUEST_URI'])) {
 
 	$findDish = "SELECT * FROM dish WHERE name = '$dish' AND restaurant = '$restaurant'";
 	$result1 = $db->query($findDish);
-	while($row = $result1->fetch_assoc()) {
-		$identity = $row['dishid'];
+	while($row = $result1->fetch_object()) {
+		$identity = $row->dishid;
 	}
 
 	foreach($parsedType as $r) {
@@ -179,17 +187,19 @@ if(isset($_POST['submit']) && isset($_SERVER['REQUEST_URI'])) {
 		while($row = $result2->fetch_assoc()) {
 			$tagidentity = $row['tagid'];
 		}
-		$tagIDinsert = "INSERT INTO dishesandtags(dishid, tagid) VALUES ('$identity', '$tagidentity')";
-		$db->query($tagIDinsert);
+		$tagIDinsert = $db->prepare("INSERT INTO dishesandtags(dishid, tagid) VALUES (?, ?)");
+		$tagIDinsert->bind_param('ii', $identity, $tagidentity);
+		$tagIDinsert->execute();
 
-
+        if(!$result) die('could not insert into dishesandtags');
 	}
-
 //delete dish from admin page
-//------------------------------
-	$dishDelete = "DELETE FROM dishRequests WHERE id=$id";
+	$dishDelete = "DELETE FROM dishrequests WHERE id='$id'";
 	$db->query($dishDelete);
+	header ('Location: admin.php']);
+	
 }
+//if(!isset($_POST['submit'])) //die('submit not set');
 ?>
 
 <?php

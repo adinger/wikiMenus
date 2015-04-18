@@ -62,7 +62,7 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 			$dish_id = $n->fetch_assoc()['dishid'];
 			
 			$dish_rating = trim($_POST['reviewrating']);
-			$dish_review = $db->real_escape_string(trim($_POST['reviewtext']));
+			$dish_review = trim($_POST['reviewtext']);
 			$email = $db->query("SELECT email FROM users WHERE username = '$_SESSION[username]' ");
 			$user_email = $email->fetch_assoc()['email'];
 			if(!empty($dish_name) && !empty($dish_rating) && !empty($dish_review)){

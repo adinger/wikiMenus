@@ -2,6 +2,7 @@
 ob_start(); // suppress "header must be called before first output" error
 require "db/connect.php"; 
 session_start(); 
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 require "functions/userfunctions.php";
 ?>
 <!doctype html>
@@ -40,7 +41,6 @@ require "functions/userfunctions.php";
 		      
 		    </ul>
 		    <ul class="right">
-		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#missionSection">Mission</a></li>
 		      <li class="divider"></li>
 		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#restrauntSection">Business</a></li>
 		      <li class="divider"></li>
@@ -61,14 +61,14 @@ require "functions/userfunctions.php";
 		  </section>
 		</nav>
 	</div>
-    
-    <?php prevent_intruders_admin(); ?>
+
+<?php prevent_intruders_admin(); // prevent people who aren't admin from seeing page ?>     
 	<h1 style="color: #8B0000" align="center"> Pending Restaurant Requests </h1>
     <p align="center"><a href="admin.php">Pending Dish Requests</a></p>
 	<hr>
 
 	<?php
-
+    
 
 $sql = "SELECT * FROM restaurantrequests";
 $result = $db->query($sql);
@@ -76,13 +76,13 @@ $result = $db->query($sql);
 if($result->num_rows > 0) {
 	while($row = $result->fetch_assoc()) {
 		$restaurantName = $row['name'];
-		$restaurantAddress = $row["address"];
+		$restaurantAddress = $row['address'];
 		$id = $row['id'];
 
 		?>
 
  
-		<form method="POST">
+		<form method="POST" formaction="admin2.php">
 			<div class="row">
 	  			<div class="small-12 text-center columns">
 	  				<table style = "width:100%">
@@ -98,8 +98,8 @@ if($result->num_rows > 0) {
 							<td><input align="center" name="id" value=<?=$id?> /></td>
 						    <td><input align="center" name="restaurant" value="<?=$restaurantName?>" /></td>
 						    <td><input align="center" type= "text" name="address" value="<?=$restaurantAddress?>" /></td>
-				  			<td><input class="button round tiny success" type="submit" name="submit" value="Submit"  formaction="admin2.php"></td>
-				  			<td><input class="button round tiny alert" type="submit" name="delete" value="Delete" formaction="admin2.php"></td>
+				  			<td><input class="button round tiny success" type="submit" name="add" value="Add"  ></td>
+				  			<td><input class="button round tiny alert" type="submit" name="delete" value="Delete" ></td>
 				  		</tr>
 				  	</table>
 	  			</div>
@@ -121,36 +121,37 @@ else {
 	}
 
 ?>
-
-
-
 <?php
 
 //Will execute once submit is pressed
 require_once 'db/connect.php';
 
-if (isset($_POST['submit']) && isset($_SERVER['REQUEST_URI']))
-
+//if (isset($_POST['add']) && isset($_SERVER['REQUEST_URI']))
+if (isset($_POST['add']) )
 {
-    header ('Location: ' . $_SERVER['REQUEST_URI']);
+    //header ('Location: ' . $_SERVER['REQUEST_URI']);
+    
 	$id = $_POST['id'];
 	$restaurant = $_POST['restaurant'];
 	$address = $_POST['address'];	
 
-	$restaurantAdd = "INSERT INTO restaurants(name, address) VALUES ('$restaurant', '$address')";
-	$result = $db->query($restaurantAdd);
+	$restaurantAdd = $db->prepare("INSERT INTO restaurants(name, address) VALUES (?, ?)");
+	$restaurantAdd->bind_param('ss', $restaurant, $address);
+	$result = $restaurantAdd->execute();
+	//$result = $db->query($restaurantAdd);
 	
 	if($result)
 		echo "The restaurant has been successfully added to restaurants table.";
 	else 
-		echo "Faliure";
+		echo "Restaurant hasn't been added to database";
 	
-	$dishDelete = "DELETE FROM restaurantRequests WHERE id=$id";
+	$dishDelete = "DELETE FROM restaurantrequests WHERE id='$id'";
 
 	if ($db->query($dishDelete) === TRUE)
 	    echo " Record deleted successfully";
 	else
 	    echo " Error deleting record: " . $db->error;
+	header ('Location: admin2.php');
 }
 
 ?>
@@ -158,10 +159,12 @@ if (isset($_POST['submit']) && isset($_SERVER['REQUEST_URI']))
 <?php
 require_once 'db/connect.php';
 //will execute once delete is pressed
-if (isset($_POST['delete']) && isset($_SERVER['REQUEST_URI'])) {
-	header ('Location: ' . $_SERVER['REQUEST_URI']);
+//if (isset($_POST['delete']) && isset($_SERVER['REQUEST_URI'])) {
+if (isset($_POST['delete'])) {
+	//header ('Location: ' . $_SERVER['REQUEST_URI']);
+	header ('Location: admin2.php');
 	$id = $_POST['id'];
-	$dishDelete = "DELETE FROM restaurantRequests WHERE id=$id";
+	$dishDelete = "DELETE FROM restaurantrequests WHERE id='$id'";
 	if ($db->query($dishDelete) === TRUE)
 	    echo " Record deleted successfully";
 	else

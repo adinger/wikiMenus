@@ -5,8 +5,10 @@ require "db/connect.php";
 session_start(); 
 require "functions/userfunctions.php";
 //$FORM['name'] = "";
- if (isset($_GET['name'])) {
+if (isset($_GET['name'])) {
    $temp = htmlspecialchars($_GET['name']);
+} else {
+     die("name isn't set");
 }
 
 ?>
@@ -47,7 +49,8 @@ require "functions/userfunctions.php";
           
         </ul>
         <ul class="right">
-            <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#missionSection">Mission</a></li>
+              <li class="divider"></li>
+		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#missionSection">Mission</a></li>
 		      <li class="divider"></li>
 		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#restrauntSection">Business</a></li>
 		      <li class="divider"></li>
@@ -75,6 +78,28 @@ require "functions/userfunctions.php";
  -->
 	<h1 style="color: #8B0000" class="text-center"> Submit Your Dish Request </h1>
 	<hr>
+<?php
+
+if (!empty($_POST)) {
+    if(isset($_POST['submit'])) {
+        $RestaurantName = $_POST['RestaurantName'];
+        $DishName = $_POST['DishName'];
+        $Price = $_POST['Price'];
+        $Rating = $_POST['Rating'];
+        $Type = $_POST['Type'];
+        $Course = $_POST['Course'];
+        $Description = $_POST['Description'];
+        $insert = $db->prepare("INSERT INTO dishrequests (dishName, restaurant, price, tags, course, description, averagerating) VALUES (?,?,?,?,?,?,?)");
+        $insert->bind_param('ssisssi',$DishName, $RestaurantName, $Price, $Type, $Course, $Description, $Rating);
+        if($insert->execute()) {
+            echo '<p align="center" style="color:green">Your dish request has successfully been sent.</p>';
+        } else {
+            die("could not execute query"); 
+        }
+    } //else die("submit not set");
+} //else die("post is empty");
+
+?>
  	<form method="POST" data-abide>
 		
     <div class ="row">
@@ -101,7 +126,7 @@ require "functions/userfunctions.php";
       	<div class ="row">
 			       <div class="large-12 large-centered columns">
       			 <label style="color: #8B0000">Price <small>Required</small>
-        			<input name = "Price" type="number" step=".01" placeholder="5" required/>
+        			<input name = "Price" type="number" placeholder="5" required/>
       		</div>
       	</div>
       	
@@ -115,7 +140,7 @@ require "functions/userfunctions.php";
       	 <div class="row">
 		      <div class="large-12 large-centered columns">
 		      <label style="color: #8B0000">Tags <small>Enter separated by spaces and NO punctuation.</small>
-		        <input name = "Type" type="text" placeholder="korean" />
+		        <input name = "Type" type="text" placeholder="koreanfood healthy " />
 		      <!-- </label> -->
 		    </div>
   		</div>
@@ -148,25 +173,4 @@ require "functions/userfunctions.php";
   hh -->
 </body>
 </html>
-
-
-
-
-<?php
-
-if (isset($_POST['submit']) && isset($_SERVER['REQUEST_URI']))
-{
-  header ('Location: ' . $_SERVER['REQUEST_URI']);
-	$RestaurantName = $_POST['RestaurantName'];
-	$DishName = $_POST['DishName'];
-	$Price = $_POST['Price'];
-	$Rating = $_POST['Rating'];
-	$Type = $_POST['Type'];
-	$Course = $_POST['Course'];
-	$Description = $_POST['Description'];
-	$dishAdd = "INSERT INTO dishrequests (dishName, restaurant, price, tags, course, description, averagerating) 
-	VALUES ('$DishName', '$RestaurantName', '$Price', '$Type', '$Course', '$Description', '$Rating')";
-	$result = $db->query($dishAdd);
-}
-
-?>
+<?php ob_end_flush();  ?>

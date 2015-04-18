@@ -16,8 +16,7 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 	<?php
 		$r = $db->query("SELECT averagerating FROM dish WHERE dishid = $_GET[dish]");
 		$rating = $r->fetch_assoc()['averagerating'];
-		echo $rating;
-		echo " stars<br>";
+		echo $rating . " stars<br>";
 		$p = $db->query("SELECT price FROM dish WHERE dishid = $_GET[dish]");
 		$price = $p->fetch_assoc()['price'];
 		echo "$";
@@ -60,7 +59,7 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 					$rid = $restaurant->fetch_assoc()['id'];
 					echo "<input type='hidden' name='restaurant' value='".$rid."'>";
                     echo "<input type='hidden' name='dishname' value='".$dish."'>";
-                    if($_SESSION['username'] != 'admin') echo '<button type="submit">Write a Review</button>';
+                    if(isset($_SESSION['username']) && $_SESSION['username'] != 'admin') echo '<button type="submit">Write a Review</button>';
 				?>
 			    
 			</form>

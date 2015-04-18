@@ -6,7 +6,7 @@
 		<div class="small-10 small-centered columns floating">
             <?php
             if(isset($_SESSION['username'])) {
-                header('Location: userprofile.php');
+                header('Location: userprofile.php?username='.$_SESSION['username']);
             } else {
             ?>
             <div class="small-12 medium-6 columns">
