@@ -196,7 +196,7 @@ if(isset($_POST['submit'])) {
 //delete dish from admin page
 	$dishDelete = "DELETE FROM dishrequests WHERE id='$id'";
 	$db->query($dishDelete);
-	header ('Location: admin.php']);
+	header ('Location: admin.php');
 	
 }
 //if(!isset($_POST['submit'])) //die('submit not set');

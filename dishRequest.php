@@ -126,7 +126,7 @@ if (!empty($_POST)) {
       	<div class ="row">
 			       <div class="large-12 large-centered columns">
       			 <label style="color: #8B0000">Price <small>Required</small>
-        			<input name = "Price" type="number" placeholder="5" required/>
+        			<input name = "Price" type="number" placeholder="5" step=".01" required/>
       		</div>
       	</div>
       	
@@ -174,3 +174,4 @@ if (!empty($_POST)) {
 </body>
 </html>
 <?php ob_end_flush();  ?>
+            
