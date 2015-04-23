@@ -40,30 +40,29 @@ require "functions/userfunctions.php";
 		      
 		    </ul>
 		    <ul class="right">
-		      <li><a href="/wikimenus">Mission</a></li>
 		      <li class="divider"></li>
-		      <li><a href="/wikimenus/#restrauntSection">Business</a></li>
+		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#restrauntSection">Business</a></li>
 		      <li class="divider"></li>
-		      <li><a href="/wikimenus/#teamSection">Team</a></li>
+		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#teamSection">Team</a></li>
 		      <li class="divider"></li>
-		      <li><a href="/wikimenus/#videoSection">See It In Action</a></li>
+		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#videoSection">See It In Action</a></li>
 		      <li class="divider"></li>
-		      <li><a href="/wikimenus/#contactSection">Contacts</a></li>
+		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#contactSection">Contacts</a></li>
 		      <li class="divider"></li>
                 
-                <?php
-                    if(logged_in()) {
-                        echo '<li><a href="logout.php">Log out</a></li>';
-                    } else {
-                        echo '<li><a href="loginform.php">Log in / Register</a></li>';
-                    }
-                ?>
+                	<?php
+		            if(logged_in()) {
+		            	echo '<li><a href="logout.php">Log out</a></li>';
+		            } else {
+		                echo '<li><a href="loginform.php">Log in / Register</a></li>';
+		            }
+		        ?>
                 
 		    </ul>
 		  </section>
 		</nav>
 	</div>
-
+	<?php prevent_intruders_admin(); ?>
 	<h1 style="color: #8B0000" align="center"> Pending Dish Requests </h1>
 	    <p align="center"><a href="admin2.php">Pending Restaurant Requests</a></p>
 	<hr>
@@ -149,7 +148,7 @@ if(isset($_POST['submit'])) {
 	$description = $_POST['description'];
     //$restaurant = htmlspecialchars($_GET['name']);
 	$dishAdd = $db->prepare("INSERT INTO dish(restaurant, name, price, averagerating, course, description) VALUES (?, ?, ?, ?, ?, ?)");
-	$dishAdd->bind_param('ssiiss', $restaurant, $dish, $price, $rating, $course, $description);
+	$dishAdd->bind_param('ssdiss', $restaurant, $dish, $price, $rating, $course, $description);
 	$dishAdd->execute();
     //echo 'dishAdd query:' . $dishAdd;
 	/*$tagAdd = $db->prepare("INSERT INTO tags(tag) VALUES (?)";

@@ -1,3 +1,9 @@
+<?php 
+ob_start(); // suppress "header must be called before first output" error
+require "db/connect.php"; 
+session_start(); 
+require "functions/userfunctions.php";
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,8 +17,6 @@
   <script src="./js/controllers.js"></script> -->
   <link rel="stylesheet" href="./css/styles.css">
   <link rel="stylesheet" href="./foundation/css/foundation.css">
-  
-
   <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
@@ -27,8 +31,6 @@
   <link href="http://fonts.googleapis.com/css?family=Rancho" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Gudea" rel="stylesheet" type="text/css">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <?php require "db/connect.php"; ?>	<!--connect to database-->
 </head>
 
 
@@ -51,18 +53,25 @@
 		      
 		    </ul>
 		    <ul class="right">
-		      <li><a href="#missionSection">Mission</a></li>
 		      <li class="divider"></li>
-		      <li><a href="#restrauntSection">Business</a></li>
+		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#restrauntSection">Business</a></li>
 		      <li class="divider"></li>
-		      <li><a href="#teamSection">Team</a></li>
+		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#teamSection">Team</a></li>
 		      <li class="divider"></li>
-		      <li><a href="#videoSection">See It In Action</a></li>
+		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#videoSection">See It In Action</a></li>
 		      <li class="divider"></li>
-		      <li><a href="#contactSection">Contacts</a></li>
+		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#contactSection">Contacts</a></li>
 		      <li class="divider"></li>
-		      <li><a href="loginform.php">Log in / Register</a></li>
-		    </ul>
+	        
+		        <?php
+		            if(logged_in()) {
+		            	echo '<li><a href="userprofile.php?username='.$_SESSION['username'].'">Profile</a></li>';
+		            } else {
+		                echo '<li><a href="loginform.php">Log in / Register</a></li>';
+		            }
+		        ?>
+	
+	        </ul>
 		  </section>
 		</nav>
 	</div>
@@ -79,7 +88,7 @@
                 <div class="small-10 small-centered columns">
                     <div class="row collapse postfix-radius">
                         <div class="small-10 columns">
-                            <input id="autocomplete" type="text" placeholder="e.g. McDonald's">
+                            <input id="autocomplete" type="text" placeholder="e.g. Potbelly">
                         </div>
                         <div class="small-2 columns">
                              <a href="#" class="button postfix custom-button-class" id="wikiButton">Go</a>
@@ -95,7 +104,7 @@
                     <form method="post" action="tagSearch.php">
                         <div class="row collapse postfix-radius">
                             <div class="small-10 columns">
-                                 <input name="tag" type="text" placeholder="e.g. hamburger" required>
+                                 <input name="tag" type="text" placeholder="e.g. burger" required>
                             </div>
                             <div class="small-2 columns">
                                 <input class="button postfix custom-button-class" id="wikiButton" type="submit"></input>
@@ -445,3 +454,4 @@
   <!--<script src="http://localhost:35729/livereload.js"></script>-->
 </body>
 </html>
+<?php ob_end_flush();  ?>

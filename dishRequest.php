@@ -45,29 +45,34 @@ if (isset($_GET['name'])) {
       <section class="top-bar-section">
         <!-- Left Nav Section -->
          <ul class="left">
-           <li><a href="./restaurantRequest.php" data-reveal-id="Subscribe">Request New Restaurant</a></li>
-          
+           <li><a href="./restaurantRequest.php" data-reveal-id="Subscribe">Request New Restaurant</a></li>          
         </ul>
-        <ul class="right">
-              <li class="divider"></li>
-		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#missionSection">Mission</a></li>
-		      <li class="divider"></li>
-		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#restrauntSection">Business</a></li>
-		      <li class="divider"></li>
-		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#teamSection">Team</a></li>
-		      <li class="divider"></li>
-		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#videoSection">See It In Action</a></li>
-		      <li class="divider"></li>
-		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#contactSection">Contacts</a></li>
-		      <li class="divider"></li>
-                
-                <?php
-                    if(logged_in()) {
-                        echo '<li><a href="logout.php">Log out</a></li>';
-                    } else {
-                        echo '<li><a href="loginform.php">Log in / Register</a></li>';
-                    }
-                ?>
+        
+	<ul class="right">
+	      <li class="divider"></li>
+	      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#restrauntSection">Business</a></li>
+	      <li class="divider"></li>
+	      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#teamSection">Team</a></li>
+	      <li class="divider"></li>
+	      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#videoSection">See It In Action</a></li>
+	      <li class="divider"></li>
+	      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#contactSection">Contacts</a></li>
+	      <li class="divider"></li>
+        
+	        <?php
+	            if(logged_in()) {
+	            	echo '
+	            <li class="has-dropdown">
+	                    <a href="#">Profile</a>
+	                    <ul class="dropdown">
+	                    	<li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/userprofile.php?username='.$_SESSION['username'].'">My Profile Page</a></li>
+	                    	<li><a href="logout.php">Log out</a></li>
+	                    </ul>
+	            </li>';
+	            } else {
+	                echo '<li><a href="loginform.php">Log in / Register</a></li>';
+	            }
+	        ?>
 
         </ul>
       </section>
@@ -90,7 +95,7 @@ if (!empty($_POST)) {
         $Course = $_POST['Course'];
         $Description = $_POST['Description'];
         $insert = $db->prepare("INSERT INTO dishrequests (dishName, restaurant, price, tags, course, description, averagerating) VALUES (?,?,?,?,?,?,?)");
-        $insert->bind_param('ssisssi',$DishName, $RestaurantName, $Price, $Type, $Course, $Description, $Rating);
+        $insert->bind_param('ssdsssi',$DishName, $RestaurantName, $Price, $Type, $Course, $Description, $Rating);
         if($insert->execute()) {
             echo '<p align="center" style="color:green">Your dish request has successfully been sent.</p>';
         } else {
@@ -126,14 +131,14 @@ if (!empty($_POST)) {
       	<div class ="row">
 			       <div class="large-12 large-centered columns">
       			 <label style="color: #8B0000">Price <small>Required</small>
-        			<input name = "Price" type="number" placeholder="5" step=".01" required/>
+        			<input name = "Price" type="number" placeholder="5" step="0.01" required/>
       		</div>
       	</div>
       	
         <div class ="row">
 			     <div class="large-12 large-centered columns">
       			<label style="color: #8B0000">Rating <small>Required</small> <small> Only integers will be accepted!</small>
-        			<input name = "Rating" type="number" placeholder="1-5" min="1" max="5" required/>
+        			<input name = "Rating" type="number" placeholder="0-5" min="0" max="5" step=".01" required/>
       		</div>
       	</div>
 
@@ -174,4 +179,3 @@ if (!empty($_POST)) {
 </body>
 </html>
 <?php ob_end_flush();  ?>
-            

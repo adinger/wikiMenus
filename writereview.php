@@ -39,13 +39,7 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 				
 			</select>
 		<label for="reviewrating">Your Rating:</label>
-			<select name="reviewrating" id="reviewrating">
-				<option value="5">5</option>
-				<option value="4">4</option>
-				<option value="3">3</option>
-				<option value="2">2</option>
-				<option value="1">1</option>
-			</select>
+			<input type="text" name="reviewrating" id="reviewrating" placeholder="e.g. 4.5"></input>
 		<label for="reviewtext">Your Review:</label>
 			<textarea name="reviewtext" id="reviewtext" rows="10" cols="30"></textarea>
 		<button type = "submit" id="reviewsubmit">Submit Review</button>
@@ -70,8 +64,9 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 				$insert->bind_param('si', $dish_review, $dish_rating);
 
 				if($insert->execute()){
+					$dish_review2 = $db->real_escape_string($dish_review);
 
-					$review= $db->query("SELECT reviewid FROM review WHERE verbalreview = '$dish_review'");
+					$review= $db->query("SELECT reviewid FROM review WHERE verbalreview = '$dish_review2'");
 					
 					$review_id = $review->fetch_assoc()['reviewid'];
 					
@@ -89,3 +84,5 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 ?>
 <div>
 </html>
+<?php include 'tail.php' ?>
+    

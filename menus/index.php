@@ -50,19 +50,19 @@ require "../functions/userfunctions.php";
           
         </ul>
         <ul class="right">
-          <li><a href="~alding2/wikimenus">Mission</a></li>
-          <li class="divider"></li>
-          <li><a href="~alding2/wikimenus/#restrauntSection">Business</a></li>
-          <li class="divider"></li>
-          <li><a href="~alding2/wikimenus/#teamSection">Team</a></li>
-          <li class="divider"></li>
-          <li><a href="~alding2/wikimenus/#videoSection">See It In Action</a></li>
-          <li class="divider"></li>
-          <li><a href="~alding2/wikimenus/#contactSection">Contacts</a></li>
-          <li class="divider"></li>
+	      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#missionSection">Mission</a></li>
+	      <li class="divider"></li>
+	      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#restrauntSection">Business</a></li>
+	      <li class="divider"></li>
+	      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#teamSection">Team</a></li>
+	      <li class="divider"></li>
+	      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#videoSection">See It In Action</a></li>
+	      <li class="divider"></li>
+	      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#contactSection">Contacts</a></li>
+	      <li class="divider"></li>
                 <?php
                     if(logged_in()) {
-                        echo '<li><a href="../logout.php">Log out</a></li>';
+                        echo '<li><a href="../userprofile.php?username='.$_SESSION['username'].'">My Profile</a></li>';
                     } else {
                         echo '<li><a href="../loginform.php">Log in / Register</a></li>';
                     }
@@ -83,5 +83,3 @@ require "../functions/userfunctions.php";
 
 </body>
 </html>
-
-

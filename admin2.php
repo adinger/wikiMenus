@@ -50,13 +50,13 @@ require "functions/userfunctions.php";
 		      <li class="divider"></li>
 		      <li><a href="http://web.engr.illinois.edu/~alding2/wikimenus/#contactSection">Contacts</a></li>
 		      <li class="divider"></li>
-                <?php
-                    if(logged_in()) {
-                        echo '<li><a href="logout.php">Log out</a></li>';
-                    } else {
-                        echo '<li><a href="loginform.php">Log in / Register</a></li>';
-                    }
-                ?>
+			<?php
+		            if(logged_in()) {
+		            	echo '<li><a href="logout.php">Log out</a></li>';
+		            } else {
+		                echo '<li><a href="loginform.php">Log in / Register</a></li>';
+		            }
+		        ?>
 		    </ul>
 		  </section>
 		</nav>
