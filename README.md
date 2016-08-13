@@ -9,7 +9,7 @@ Github Instructions:
 - In the top right corner, click "Fork". You now have your own branch/copy of the repository that you can commit to without messing up the master branch.
 - In Git Shell, navigate to C:\xampp\htdocs (or whereever you downloaded xampp to).
 - In Git Shell, type "git clone https://github.com/[your username]/wikiMenus". You now have a local copy of your branch on your computer.
-- To configure Git Shell to go to the C:\xampp\htdocs\wikimenus folder by default when you start the shell, go to the pretty GitHub UI.
+- To configure Git Shell to go to the C:\xampp\htdocs\wikimenus folder by default when you start the shell, go to the GitHub UI.
     1. Click on the gear symbol at the top right.
     2. Click on options in the dropdown.
     3. On the right side, under "Clone Path", change the path in that input field to C:\xampp\htdocs\wikimenus, or whereever you have the wikimenus folder.
